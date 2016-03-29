@@ -1,92 +1,170 @@
-<ion-view view-title="Dashboard">
-  <ion-content>
-    <div class="headBar">
-      <h2 class="headBarZone">东莞</h2>
-      <div style="display: inline-block;">
-        <label class="item-input-wrapper" style="background: rgba(255, 250, 250, 0.48);margin-left: .6em;width: 200px;">
-          <input type="search" placeholder="请输入楼盘名" style="background:none;height:24px;color:#fff;width: 200px;">
-          <i class="icon ion-ios-search placeholder-icon"></i>
-        </label>
-      </div>
-    </div>
-
-    <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true">
-      <ion-slide ng-repeat="slider in sliders">
-        <img ng-src="{{slider.src}}" alt="{{slider.title}}"  />
-      </ion-slide>
-    </ion-slide-box>
-
-    <div class="row housetype padding">
-      <div class="col">
-        <img src="img/housetype/s1.png" alt="housetype1" />
-        <h4>洋房</h4>
-      </div>
-      <div class="col">
-        <img src="img/housetype/s2.png" alt="housetype2" />
-        <h4>公寓</h4>
-      </div>
-      <div class="col">
-        <img src="img/housetype/s3.png" alt="housetype3" />
-        <h4>写字楼</h4>
-      </div>
-      <div class="col">
-        <img src="img/housetype/s4.png" alt="housetype4" />
-        <h4>商铺</h4>
-      </div>
-      <div class="col">
-        <img src="img/housetype/s5.png" alt="housetype5" />
-        <h4>别墅</h4>
-      </div>
-    </div>
-
-    <div class="filter">
-      <div class="filter_header">
-        <h4 ng-click="showFilter('zt')">状态</h4>
-        <span> | </span>
-        <h4 ng-click="showFilter('qy')">区域</h4>
-        <span> | </span>
-        <h4 ng-click="showFilter('zj')">总价</h4>
-        <span> | </span>
-        <h4 ng-click="showFilter('fx')">房型</h4>
-        <span> | </span>
-        <h4 ng-click="showMoreFilter()">更多</h4>
-      </div>
-
-      <div class="filter_zt" ng-show="showFilterBox">
-        <ul class="list">
-          <li class="item" ng-repeat="item in items" ng-click="filterZt(item.lx,item.id)">{{item.name}}</li>
-        </ul>
-      </div>
-
-      <div class="row" ng-show="showMoreFilterBox">
-        <div class="col-33">
-          <ul class="list">
-            <li class="item" ng-click="moreFilterItem('ts')">特色</li>
-            <li class="item" ng-click="moreFilterItem('sm')">售卖状态</li>
-          </ul>
+<ion-view>
+  <ion-side-menus>
+    <ion-side-menu side="left" class="leftSide">
+      <ion-content>
+      <div class="row tx padding" style="display: table !important; width: 100% !important; height: 80px;">
+        <div class="col-90 row" >
+          <div class="col-33">
+            <img src="img/tx.jpg" />
+          </div>
+          <div class="col-67" style="padding-top:6px;">
+            <h3>天网</h3>
+            <h4>188****8888</h4>
+          </div>
         </div>
-        <div class="col-67">
-          <ul class="list">
-            <li class="item" ng-repeat="item in moreItems" ng-click="filterZt(item.lx,item.id)">{{item.name}}</li>
-          </ul>
+        <div class="col-10" style="display: table-cell; vertical-align: middle;">
+          <i class="icon ion-ios-arrow-forward"></i>
         </div>
       </div>
 
-    </div>
 
-    <div class="filter_jg">
-      <ul class="list">
-        <li class="item row" ng-repeat="lp in result">
-          <div class="col-33 padding">
-            <img ng-src="{{lp.thumbnail}}" width="100%" />
-          </div>
-          <div class="col-67 padding-top">
-            <h4>{{lp.name}}</h4>
-            <p>状态：{{lp.zt}} - 区域：{{lp.qy}} <br />总价：{{lp.zj}} - 户型：{{lp.fx}}</p>
-          </div>
-        </li>
-      </ul>
-    </div>
+      <div class="list my">
+        <a class="item item-icon-left item-icon-right" href="#">
+          <i class="icon ion-cash"></i>
+          我的叫车券
+          <span class="badge badge-assertive">3</span>
+        </a>
+        <a class="item item-icon-left item-icon-right" href="#">
+          <i class="icon ion-ribbon-a"></i>
+          我的积分
+          <span class="badge badge-assertive">300</span>
+        </a>
+        <a class="item item-icon-left" href="#">
+          <i class="icon ion-ios-cart"></i>
+          积分商城
+        </a>
+        <a class="item item-icon-left" href="#">
+          <i class="icon ion-person-stalker"></i>
+          推荐有奖
+        </a>
+      </div>
 
-  </ion-content>
+      <div class="list my">
+        <a class="item item-icon-left" href="#">
+          <i class="icon ion-ios-calculator-outline"></i>
+          购房计算器
+        </a>
+        <a class="item item-icon-left" href="#">
+          <i class="icon ion-ios-heart-outline"></i>
+          我的评分
+        </a>
+        <a class="item item-icon-left" href="#">
+          <i class="icon ion-email-unread"></i>
+          我的反馈
+        </a>
+      </div>
+
+      <div class="list my">
+        <a class="item item-icon-left" href="#">
+          <i class="icon ion-ios-medical-outline"></i>
+          用户指南
+        </a>
+        <a class="item item-icon-left" href="#">
+          <i class="icon ion-ios-people"></i>
+          关于我们
+        </a>
+        <a class="item item-icon-left" href="#">
+          <i class="icon ion-ios-gear"></i>
+          设置
+        </a>
+      </div>
+    </ion-content>
+    </ion-side-menu>
+
+    <ion-side-menu-content>
+
+      <ion-content>
+        <div class="headBar">
+          <div class="user" menu-toggle="left"><i class="icon ion-ios-person-outline"></i></div>
+          <h2 class="headBarZone">东莞</h2>
+          <i class="icon ion-ios-arrow-down" style="color:#fff;font-size: 1.1em;"></i>
+          <div style="display: inline-block;">
+            <label class="item-input-wrapper" style="background: rgba(255, 250, 250, 0.48);margin-left: .6em;width: 200px;">
+              <input type="search" placeholder="请输入楼盘名" style="background:none;height:24px;color:#222;width: 200px;">
+              <i class="icon ion-ios-search placeholder-icon"></i>
+            </label>
+          </div>
+        </div>
+
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true">
+          <ion-slide ng-repeat="slider in sliders">
+            <img ng-src="{{slider.src}}" alt="{{slider.title}}"  />
+          </ion-slide>
+        </ion-slide-box>
+
+        <div class="row housetype padding">
+          <div class="col">
+            <img src="img/housetype/s1.png" alt="housetype1" />
+            <h4>洋房</h4>
+          </div>
+          <div class="col">
+            <img src="img/housetype/s2.png" alt="housetype2" />
+            <h4>公寓</h4>
+          </div>
+          <div class="col">
+            <img src="img/housetype/s3.png" alt="housetype3" />
+            <h4>写字楼</h4>
+          </div>
+          <div class="col">
+            <img src="img/housetype/s4.png" alt="housetype4" />
+            <h4>商铺</h4>
+          </div>
+          <div class="col">
+            <img src="img/housetype/s5.png" alt="housetype5" />
+            <h4>别墅</h4>
+          </div>
+        </div>
+
+        <div class="filter">
+          <div class="filter_header">
+            <h4 ng-click="showFilter('zt')">状态</h4>
+            <span> | </span>
+            <h4 ng-click="showFilter('qy')">区域</h4>
+            <span> | </span>
+            <h4 ng-click="showFilter('zj')">总价</h4>
+            <span> | </span>
+            <h4 ng-click="showFilter('fx')">房型</h4>
+            <span> | </span>
+            <h4 ng-click="showMoreFilter()">更多</h4>
+          </div>
+
+          <div class="filter_zt" ng-show="showFilterBox">
+            <ul class="list">
+              <li class="item" ng-repeat="item in items" ng-click="filterZt(item.lx,item.id)">{{item.name}}</li>
+            </ul>
+          </div>
+
+          <div class="row" ng-show="showMoreFilterBox">
+            <div class="col-33">
+              <ul class="list">
+                <li class="item" ng-click="moreFilterItem('ts')">特色</li>
+                <li class="item" ng-click="moreFilterItem('sm')">售卖状态</li>
+              </ul>
+            </div>
+            <div class="col-67">
+              <ul class="list">
+                <li class="item" ng-repeat="item in moreItems" ng-click="filterZt(item.lx,item.id)">{{item.name}}</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="filter_jg">
+          <ul class="list">
+            <li class="item row" ng-repeat="lp in result">
+              <div class="col-33 padding">
+                <img ng-src="{{lp.thumbnail}}" width="100%" />
+              </div>
+              <div class="col-67 padding-top">
+                <h4>{{lp.name}}</h4>
+                <p>状态：{{lp.zt}} - 区域：{{lp.qy}} <br />总价：{{lp.zj}} - 户型：{{lp.fx}}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </ion-content>
+    </ion-side-menu-content>
+  </ion-side-menus>
 </ion-view>

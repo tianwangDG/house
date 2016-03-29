@@ -73,6 +73,8 @@ angular.module('starter.controllers', [])
       {id:5,lx:'sm',name:'售罄'}
     ];
 
+
+
     $scope.result = $scope.fcData;
 
     $scope.showFilterBox = false;
@@ -94,9 +96,9 @@ angular.module('starter.controllers', [])
 
       }
 
-      if(!$scope.showFilterBox){
+      //if(!$scope.showFilterBox){
         $scope.showFilterBox = !$scope.showFilterBox;
-      }
+      //}
 
       //console.log($filterFactor);
     }

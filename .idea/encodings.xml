@@ -4,7 +4,11 @@
     <file url="file://$PROJECT_DIR$/www/css/style.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/js/app.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/js/controllers.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/templates/login.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/templates/tab-account.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/templates/tab-chats.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/tab-dash.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/templates/tab-dd.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/tabs.html" charset="UTF-8" />
   </component>
 </project>
