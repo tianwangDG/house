@@ -1,10 +1,10 @@
-<ion-view>
+<ion-view view-title="Login">
   <div class="bar bar-header bar-stable">
-    <h2 style="padding-left:.4em;color:#d1d1d1;"><i class="icon ion-ios-arrow-left"></i></h2>
+    <button class="button-clear" ng-click="goBack()"><i class="icon ion-ios-arrow-left"></i></button>
     <h1 class="title" style="font-family: '华文细黑';"><i class="icon ion-happy-outline"></i> 陛下，请登录</h1>
   </div>
 
-  <ion-content class="has-header" style="background: url(../img/loginbg.png) no-repeat;background-position: bottom;background-size: contain;background-color: #efefef;">
+  <ion-content class="has-header" style="background: url(../img/loginbg.png) no-repeat;background-position: bottom;background-size: contain;background-color: #efefef;" scroll="false">
     <div>
     <div class="titleBox">
       <span class="border"></span>
@@ -20,20 +20,20 @@
           <button class="button button-energized" style="margin-right: 8px;width:70px;">验证</button>
         </label>
       </div>
-      <div class="list list-inset" style="margin-top: -1em;height: 58px;">
+      <div class="list list-inset" style="margin-top: -1em;">
         <label class="item item-input">
-          <i class="icon ion-key" style="color:#f7d31b;margin-right: 8px;font-size: 1.6em; padding-top: 6px;"></i>
+          <i class="icon ion-key" style="color:#f7d31b;margin-right: 8px;font-size: 1.6em;"></i>
           <input type="tel" placeholder="验证码" />
         </label>
       </div>
-      <div class="padding" style="">
+      <div class="padding" style="margin-top: -1em;">
         <button class="button button-block button-energized">
           开始
         </button>
       </div>
     </div>
 
-    <div style="text-align: center;"><p>点击开始或微信登录，即表示同意<a href="#">法律声明及隐私政策</a></p></div>
+    <div style="text-align: center;"><p style="font-size: 0.8em;">点击开始或微信登录，即表示同意<a href="#">法律声明及隐私政策</a></p></div>
 
     <div class="titleBox">
       <span class="border"></span>
@@ -42,7 +42,7 @@
     </div>
 
     <div>
-      <img src="img/wx.png" alt="微信登录" style="width:4.4em;height: 4.4em; display: block;margin:0 auto;text-align: center;" />
+      <img src="img/wx.png" alt="微信登录" style="width:4.4em;height: 4.4em; display: block;margin:0 auto;margin-top:1em;margin-bottom:1em;text-align: center;" />
     </div>
 
     </div>

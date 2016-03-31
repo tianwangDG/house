@@ -79,7 +79,7 @@
           <h2 class="headBarZone">东莞</h2>
           <i class="icon ion-ios-arrow-down" style="font-size: 1.1em;"></i>
           <div style="display: inline-block;">
-            <label class="item-input-wrapper" style="background: rgba(255, 250, 250, 1);margin-left: .6em;width: 200px;">
+            <label class="item-input-wrapper" style="background: rgba(255, 250, 250, 1);margin-left: .6em;width: 12em;">
               <input type="search" placeholder="请输入楼盘名" style="height:24px;color:#222;width: 200px;">
               <i class="icon ion-ios-search placeholder-icon"></i>
             </label>
@@ -116,16 +116,20 @@
         </div>
 
         <div class="filter">
+          <!--<div class="filter_header">-->
+            <!--<h4 ng-click="showFilter('zt')">状态</h4><i class="icon {{arrowType}}"></i>-->
+            <!--<span> | </span>-->
+            <!--<h4 ng-click="showFilter('qy')">区域</h4>-->
+            <!--<span> | </span>-->
+            <!--<h4 ng-click="showFilter('zj')">总价</h4>-->
+            <!--<span> | </span>-->
+            <!--<h4 ng-click="showFilter('fx')">房型</h4>-->
+            <!--<span> | </span>-->
+            <!--<h4 ng-click="showMoreFilter()">更多</h4>-->
+          <!--</div>-->
           <div class="filter_header">
-            <h4 ng-click="showFilter('zt')">状态</h4>
-            <span> | </span>
-            <h4 ng-click="showFilter('qy')">区域</h4>
-            <span> | </span>
-            <h4 ng-click="showFilter('zj')">总价</h4>
-            <span> | </span>
-            <h4 ng-click="showFilter('fx')">房型</h4>
-            <span> | </span>
-            <h4 ng-click="showMoreFilter()">更多</h4>
+            <h4 class="filter_cate" ng-repeat="ft in filterType | limitTo:4 track by $index" ng-click="showFilter(ft.id,ft.lx,$index)">{{ft.name}} <i class="icon " ng-class="{true:'ion-arrow-down-b allColor', false:'ion-arrow-up-b'}[($index+1) == key]"></i></h4>
+            <h4 ng-click="showMoreFilter()">更多 <i class="icon"  ng-class="{true:'ion-arrow-down-b allColor', false:'ion-arrow-up-b'}[showMoreFilterBox]"></i></h4>
           </div>
 
           <div class="filter_zt" ng-show="showFilterBox">
@@ -134,18 +138,21 @@
             </ul>
           </div>
 
-          <div class="row" ng-show="showMoreFilterBox">
+          <div class="row moreFilterBox" ng-show="showMoreFilterBox">
             <div class="col-33">
               <ul class="list">
                 <li class="item" ng-click="moreFilterItem('ts')">特色</li>
                 <li class="item" ng-click="moreFilterItem('sm')">售卖状态</li>
+
               </ul>
             </div>
             <div class="col-67">
               <ul class="list">
-                <li class="item" ng-repeat="item in moreItems" ng-click="filterZt(item.lx,item.id)">{{item.name}}</li>
+                <li class="item" style="border-left:1px solid #d1d1d1;" ng-repeat="item in moreItems" ng-click="filterZt(item.lx,item.id)">{{item.name}}</li>
               </ul>
+              <button class="button button-energized" style="margin: 1em 0;">确定</button>
             </div>
+
           </div>
 
         </div>

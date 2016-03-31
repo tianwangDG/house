@@ -72,14 +72,17 @@ angular.module('starter.controllers', [])
       {id:4,lx:'sm',name:'在售'},
       {id:5,lx:'sm',name:'售罄'}
     ];
+    $scope.filterType = [
+      {id:1,lx:'zt',name:'状态'},
+      {id:2,lx:'qy',name:'区域'},
+      {id:3,lx:'zj',name:'总价'},
+      {id:4,lx:'fx',name:'房型'},
+      {id:5,lx:'ts',name:'特色'},
+      {id:6,lx:'sm',name:'售卖状态'},
+    ];
 
 
-
-    $scope.result = $scope.fcData;
-
-    $scope.showFilterBox = false;
-
-    $scope.showFilter = function($filterFactor){
+    $scope.getFilterFactor = function($filterFactor){
       switch($filterFactor){
         case 'zt':
           $scope.items = $scope.ztItem;
@@ -93,23 +96,41 @@ angular.module('starter.controllers', [])
         case 'fx':
           $scope.items = $scope.fxItem;
           break;
-
       }
-
-      //if(!$scope.showFilterBox){
-        $scope.showFilterBox = !$scope.showFilterBox;
-      //}
-
-      //console.log($filterFactor);
+      return $scope.items;
     }
 
+
+
+    $scope.result = $scope.fcData;
+
+    $scope.showFilterBox = false;
     $scope.showMoreFilterBox = false;
+    $scope.arrowType = 'ion-arrow-up-b';
+
+    $scope.showFilter = function($id,$filterFactor,$index){
+      $scope.showMoreFilterBox = false;
+      if(!$scope.showFilterBox){
+        $scope.showFilterBox = !$scope.showFilterBox;
+        $scope.items = $scope.getFilterFactor($filterFactor);
+        $scope.key = $id;
+      }else if($scope.showFilterBox && $scope.key == $id){
+        $scope.showFilterBox = false;
+        $scope.key = null;
+      }else{
+        $scope.items = $scope.getFilterFactor($filterFactor);
+        $scope.key = $id;
+      }
+
+    }
+
+
+
 
     $scope.showMoreFilter = function($filterFactor) {
       $scope.showFilterBox = false;
-      if(!$scope.showMoreFilterBox){
-        $scope.showMoreFilterBox = !$scope.showMoreFilterBox;
-      }
+
+      $scope.showMoreFilterBox = !$scope.showMoreFilterBox;
 
       $scope.moreItems = $scope.tsItem;
 
@@ -128,11 +149,7 @@ angular.module('starter.controllers', [])
 
 
 
-
-
-
     $scope.filterZt = function($lx,$index){
-      console.log($lx,$index);
       switch($lx) {
         case 'zt':
           $scope.result = [];
@@ -321,13 +338,6 @@ angular.module('starter.controllers', [])
   })
 
 .controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
 
   $scope.chats = Chats.all();
   $scope.remove = function(chat) {
@@ -345,6 +355,19 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('LoginCtrl', function($scope){
+.controller('LoginCtrl', function($scope,$ionicHistory){
+  $scope.goBack = function () {
+    $ionicHistory.goBack();
+  }
+})
 
+.controller('testCtrl', function($scope){
+  $scope.test = 'test...';
+})
+
+.controller('houseCtrl', function($scope,$ionicHistory){
+  $scope.goBack = function () {
+    $ionicHistory.goBack();
+  }
 });
+
