@@ -383,13 +383,96 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('houseZslCtrl', function($scope, $ionicHistory){
+.controller('houseZslCtrl', function($scope, $ionicHistory, $ionicScrollDelegate){
+  $scope.goBack = function () {
+    $ionicHistory.goBack();
+  }
+
+  $scope.options = {
+    loop: true,
+    effect: 'slide',
+    speed: 500,
+    spaceBetween:30,
+    slidesPerView:2,
+    initialSlide:0,
+    slidesPerColumn:1,
+    slidesPerColumnFill:'column',
+    slidesPerGroup:1,
+    centeredSlides:true,
+    slidesOffsetBefore:0,
+    slidesOffsetAfter:0,
+    paginationHide:false,
+    pagination: '.swiper-pagination',
+    paginationClickable: true,
+  }
+
+  $scope.sliderArr = [
+    {id:1,img:'img/house/hxt/hxt1.png',name:'户型A:4室2厅2卫 164平米',price:'700万',label:'大户型+朝南+低价',ld:'15栋'},
+    {id:2,img:'img/house/hxt/hxt2.png',name:'户型B:3室2厅2卫 104平米',price:'580万',label:'小户型+朝东+高性价比',ld:'5栋'},
+    {id:3,img:'img/house/hxt/hxt3.png',name:'户型C:4室2厅2卫 124平米',price:'705万',label:'中户型+朝东+低价',ld:'4栋'},
+    {id:4,img:'img/house/hxt/hxt1.png',name:'户型D:3室2厅2卫 94平米',price:'608万',label:'大户型+朝南+低价',ld:'6栋'},
+    {id:5,img:'img/house/hxt/hxt2.png',name:'户型E:5室3厅2卫 264平米',price:'1408万',label:'小户型+朝北+低价',ld:'3栋'},
+    {id:6,img:'img/house/hxt/hxt3.png',name:'户型F:4室2厅2卫 134平米',price:'300万',label:'中户型+朝南+高性价比',ld:'11栋'},
+    {id:7,img:'img/house/hxt/hxt1.png',name:'户型G:3室1厅1卫 89平米',price:'160万',label:'大户型+朝东+低价',ld:'1栋'},
+    {id:8,img:'img/house/hxt/hxt2.png',name:'户型H:3室1厅2卫 98平米',price:'600万',label:'小户型+朝南+高性价比',ld:'7'},
+    {id:9,img:'img/house/hxt/hxt3.png',name:'户型I:3室2厅2卫 100平米',price:'500万',label:'中户型+朝东+高性价比',ld:'5栋'}
+  ];
+
+  $scope.$watch('slider', function(nv, ov) {
+    //console.log($scope.slider);
+    //$scope.test = $scope.slider;
+    //console.log($scope.test);
+    //
+    //console.log(ov);
+  });
+
+
+  $scope.onSliderShow = function($index){
+    console.log($index);
+  }
+
+  setTimeout(function(){
+    $scope.$broadcast('scroll.resize');
+  }, 2000);
+
+  $scope.map = {
+    id:1,
+    ld:[
+      {lid:1,ldh:'1栋',sales:'在售',x:548,y:453,hx:[{hid:1,title:'4室2厅2卫'},{hid:2,title:'3室2厅2卫'},{hid:3,title:'2室1厅1卫'}]},
+      {lid:2,ldh:'2栋',sales:'售完',x:830,y:700,hx:[{hid:1,title:'3室1厅2卫'},{hid:2,title:'4室2厅3卫'},{hid:3,title:'3室2厅2卫'}]},
+      {lid:3,ldh:'3栋',sales:'在售',x:900,y:960,hx:[{hid:1,title:'5室2厅3卫'},{hid:2,title:'3室1厅2卫'},{hid:3,title:'4室2厅1卫'}]}
+    ],
+    px:1600,
+    py:1249,
+  };
+
+  $scope.ldLabels = [];
+
+  //$scope.map.ld.forEach(function(ld){
+  //  let label = `<div class="ldLabel" style="top:${ld.y};left:${ld.x};">${ld.ldh}</div>`;
+  //  console.log(label);
+  //  $scope.ldLabels.push(label);
+  //});
+
+
+
+  $scope.changeXY = function(x,y){
+    $ionicScrollDelegate.scrollTo(x,y);
+  }
+
+
+
+
+
+})
+
+.controller('houseZbCtrl', function($scope, $ionicHistory){
   $scope.goBack = function () {
     $ionicHistory.goBack();
   }
 })
 
-.controller('houseZbCtrl', function($scope, $ionicHistory){
+.controller('hqyhCtrl',function($scope, $ionicHistory){
   $scope.goBack = function () {
     $ionicHistory.goBack();
   }

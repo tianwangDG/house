@@ -165,6 +165,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url:'/login',
       templateUrl: 'templates/login.html',
       controller:'LoginCtrl',
+    })
+    .state('hqyh',{
+      url:'/hqyh',
+      templateUrl: 'templates/hqyh.html',
+      controller:'hqyhCtrl',
     });
 
 
