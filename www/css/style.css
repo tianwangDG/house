@@ -308,7 +308,7 @@
 
 
 /*楼栋标签*/
-.ldLabel{position: absolute;z-index: 9999;background-color: #ef473a;color:#fff;padding:.5em 1em; border-radius: 4px;}
+.ldLabel{position: absolute;z-index: 9999;background-color: #ef473a;color:#fff;padding:.5em 1em; border-radius: 4px;width:auto;}
 
 
 
