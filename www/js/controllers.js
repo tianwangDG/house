@@ -369,5 +369,35 @@ angular.module('starter.controllers', [])
   $scope.goBack = function () {
     $ionicHistory.goBack();
   }
+})
+
+.controller('houseDetailCtrl', function($scope, $ionicHistory){
+  $scope.goBack = function () {
+    $ionicHistory.goBack();
+  }
+})
+
+.controller('houseSjtCtrl', function($scope, $ionicHistory){
+  $scope.goBack = function () {
+    $ionicHistory.goBack();
+  }
+})
+
+.controller('houseZslCtrl', function($scope, $ionicHistory){
+  $scope.goBack = function () {
+    $ionicHistory.goBack();
+  }
+})
+
+.controller('houseZbCtrl', function($scope, $ionicHistory){
+  $scope.goBack = function () {
+    $ionicHistory.goBack();
+  }
 });
+
+
+
+
+
+
 

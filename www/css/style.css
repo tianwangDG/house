@@ -152,3 +152,106 @@
 
 
 
+/*楼盘展示tab*/
+
+.tabs .tab-item .icon.ybj {
+  margin-top:4px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 50%;
+  background-image: url('../img/house/icon/houseTabIconYbj.png');
+  background-size:contain;
+}
+.tabs .tab-item .icon.sjt {
+  margin-top:4px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 50%;
+  background-image: url('../img/house/icon/houseTabIconSjt.png');
+  background-size:contain;
+}
+.tabs .tab-item .icon.zsl {
+  margin-top:4px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 50%;
+  background-image: url('../img/house/icon/houseTabIconZsl.png');
+  background-size:contain;
+}
+.tabs .tab-item .icon.zb {
+  margin-top:4px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 50%;
+  background-image: url('../img/house/icon/houseTabIconZb.png');
+  background-size:contain;
+}
+.tabs .tab-item .icon.ybjOn {
+  margin-top:4px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 50%;
+  background-image: url('../img/house/icon/houseTabIconYbjOn.png');
+  background-size:contain;
+}
+.tabs .tab-item .icon.sjtOn {
+  margin-top:4px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 50%;
+  background-image: url('../img/house/icon/houseTabIconSjtOn.png');
+  background-size:contain;
+}
+.tabs .tab-item .icon.zslOn {
+  margin-top:4px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 50%;
+  background-image: url('../img/house/icon/houseTabIconZslOn.png');
+  background-size:contain;
+}
+.tabs .tab-item .icon.zbOn {
+  margin-top:4px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 50%;
+  background-image: url('../img/house/icon/houseTabIconZbOn.png');
+  background-size:contain;
+}
+
+
+
+
+/*实景图*/
+
+
+
+@media screen and (min-width: 768px), screen and (min-height: 768px) {
+
+  .house_sj{}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

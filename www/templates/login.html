@@ -1,50 +1,43 @@
-<ion-view view-title="Login">
-  <div class="bar bar-header bar-stable">
-    <button class="button-clear" ng-click="goBack()"><i class="icon ion-ios-arrow-left"></i></button>
-    <h1 class="title" style="font-family: '华文细黑';"><i class="icon ion-happy-outline"></i> 陛下，请登录</h1>
+<ion-view view-title="house" hide-nav-bar="true">
+  <div class="bar bar-header bar-clear">
+    <button class="button-clear" ng-click="goBack()"><i class="icon ion-ios-close-empty" style="color:#fff;"></i></button>
   </div>
 
-  <ion-content class="has-header" style="background: url(../img/loginbg.png) no-repeat;background-position: bottom;background-size: contain;background-color: #efefef;" scroll="false">
-    <div>
-    <div class="titleBox">
-      <span class="border"></span>
-      <span>验证登录</span>
-      <span class="border"></span>
-    </div>
+  <ion-content style="background-image: url('img/loginbg2.jpg');width:100%;height:100%;background-size: cover;" >
 
-    <div>
-      <div class="list list-inset">
-        <label class="item item-input">
-          <i class="icon ion-iphone" style="color:#f7d31b;margin-right: 8px;font-size: 1.6em;"></i>
-          <input type="tel" placeholder="请输入手机号码" />
-          <button class="button button-energized" style="margin-right: 8px;width:70px;">验证</button>
-        </label>
+    <div class="padding" style="padding:0 3em;">
+      <img src="img/logintext.png" alt="" style="display:block;margin:0 auto;padding-top:2em;width:60%;height:auto;" />
+
+      <div class="list list-inset row" style="background: none;padding:0;">
+        <div class="col-75" style="padding-right:4px;overflow: hidden;height:3.5em;">
+          <label class="item item-input" style="display: inline-block;">
+            <i class="icon ion-iphone" style="display:inline;color:#8f8f8f;margin-right: 8px;font-size: 1.6em;vertical-align:middle;"></i>
+            <input type="tel" placeholder="请输入手机号码" style="display: inline-block;" />
+          </label>
+        </div>
+        <div class="col-25">
+          <button class="button button-energized" style="position:absolute;right:0;display: inline-block;">验证</button>
+        </div>
       </div>
       <div class="list list-inset" style="margin-top: -1em;">
         <label class="item item-input">
-          <i class="icon ion-key" style="color:#f7d31b;margin-right: 8px;font-size: 1.6em;"></i>
+          <i class="icon ion-key" style="color:#8f8f8f;margin-right: 8px;font-size: 1.6em;"></i>
           <input type="tel" placeholder="验证码" />
         </label>
       </div>
-      <div class="padding" style="margin-top: -1em;">
-        <button class="button button-block button-energized">
+      <div style="margin-top: -1em;">
+        <button class="button button-block button-energized" style="color:#8f8f8f;font-family: '华文细黑';font-size: 1.2em;">
           开始
         </button>
       </div>
+      <div style="margin-top: 1em;">
+        <button class="button button-block button-energized" style="color:#8f8f8f;font-family: '华文细黑';font-size: 1.2sem;">
+          使用微信登录
+        </button>
+      </div>
+      <div><p style="font-size: 0.75em;text-align: center;color:#9ea6ac;">点击登录，即表示同意<a href="#" style="color:#f58b0e;">法律声明及隐私政策</a></p></div>
     </div>
 
-    <div style="text-align: center;"><p style="font-size: 0.8em;">点击开始或微信登录，即表示同意<a href="#">法律声明及隐私政策</a></p></div>
 
-    <div class="titleBox">
-      <span class="border"></span>
-      <span>微信登录</span>
-      <span class="border"></span>
-    </div>
-
-    <div>
-      <img src="img/wx.png" alt="微信登录" style="width:4.4em;height: 4.4em; display: block;margin:0 auto;margin-top:1em;margin-bottom:1em;text-align: center;" />
-    </div>
-
-    </div>
   </ion-content>
 </ion-view>

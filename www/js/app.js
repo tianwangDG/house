@@ -115,15 +115,59 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+  //.state('tab.houseDetail',{
+  //  url:'/houseDetail',
+  //  views: {
+  //    'tab-dd':{
+  //      templateUrl: 'templates/houseDetail.html',
+  //      controller:'houseDetailCtrl',
+  //    }
+  //  }
+  //})
+
   .state('tab.login', {
     url: '/account/login',
     views: {
       'tab-account': {
-        templateUrl: 'templates/login.html',
+        templateUrl: 'templates/login2.html',
         controller: 'LoginCtrl'
       }
     }
   });
+
+  $stateProvider
+    .state('houseTab', {
+      url: '/houseTab',
+      abstract: true,
+      templateUrl: 'templates/houseTabs.html'
+    })
+    .state('houseDetail',{
+      url:'/houseDetail',
+          templateUrl: 'templates/houseDetail.html',
+          controller:'houseDetailCtrl'
+    })
+    .state('houseSjt',{
+      url:'/houseSjt',
+      templateUrl: 'templates/houseSjt.html',
+      controller:'houseSjtCtrl'
+    })
+    .state('houseZsl',{
+      url:'/houseZsl',
+      templateUrl: 'templates/houseZsl.html',
+      controller:'houseZslCtrl'
+    })
+    .state('houseZb',{
+      url:'/houseZb',
+      templateUrl: 'templates/houseZb.html',
+      controller:'houseZbCtrl'
+    })
+    .state('login',{
+      url:'/login',
+      templateUrl: 'templates/login.html',
+      controller:'LoginCtrl',
+    });
+
+
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');

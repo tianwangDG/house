@@ -1,0 +1,55 @@
+<ion-view hide-nav-bar="true">
+  <div class="bar bar-header">
+    <button class="button button-icon icon ion-ios-arrow-left" ng-click="goBack()"></button>
+    <div class="h1 title" style="font-family: '华文细黑';">碧湖东岸</div>
+  </div>
+
+  <ion-content class="has-header" scroll="false" style="transform-style: preserve-3d;-webkit-transform-style: preserve-3d;-moz-transform-style: preserve-3d;">
+    <div style="padding:1.2em;">
+      <span style="background-color: #f62e2e;color:#fff;font-size: 1em;padding:.25em;margin-right: .3em;">惠</span><span style="font-size: 1.4em;vertical-align: middle;">7000元/m<sup>2</sup></span><i class="icon ion-ios-heart-outline" style="font-size:1.6em;padding-left: 0.4em;color:#f62e2e;vertical-align: middle;"></i>
+      <p style="padding-top: .6em;"><i class="icon ion-ios-location-outline" style="margin-right: .3em;color: #f62e2e;font-size:1.6em;vertical-align: middle;"></i><span style="vertical-align: middle;">东莞市常平镇松柏塘村环城北路北行300m</span></p>
+    </div>
+
+    <div style="background-color: #d1d1d1;width:100%;position:absolute;bottom:23%;height:60%;overflow: hidden;">
+
+      <ion-slide-box on-slide-changed="slideHasChanged($index)"  auto-play="true" does-continue="true">
+        <ion-slide>
+          <img src="img/house/sj/sj1.jpg" alt="" style="" />
+        </ion-slide>
+        <ion-slide>
+          <img src="img/house/sj/sj2.jpg" alt="" style="" />
+        </ion-slide>
+        <ion-slide>
+          <img src="img/house/sj/sj3.jpg" alt="" style="" />
+        </ion-slide>
+        <ion-slide>
+          <img src="img/house/sj/sj4.jpg" alt="" style="" />
+        </ion-slide>
+      </ion-slide-box>
+
+    </div>
+
+    <div class="house_sj" style="position:absolute;bottom:10%;padding:0 3em;width:100%;height:10%;background-color: #fff;">
+        <button class="button button-block button-light" style="margin:0;border: 2px solid #eb6100; max-height: 100%; position: relative; top: 50%; transform: translateY(-50%);">
+          免费预约,得优惠
+        </button>
+    </div>
+  </ion-content>
+</ion-view>
+<ion-tabs class="tabs-icon-top" style="background-color: #000 !important;">
+  <ion-tab title="样板间" icon-on="ybjOn" icon-off="ybj" href="#/houseDetail">
+    <ion-nav-view name="tab-houseDetail"></ion-nav-view>
+  </ion-tab>
+
+  <ion-tab title="实景图" icon-on="sjtOn" icon-off="sjt" href="#/houseSjt">
+    <!-- Tab 1 content -->
+  </ion-tab>
+
+  <ion-tab title="在售楼" icon-on="zslOn" icon-off="zsl" href="#/houseZsl">
+    <!-- Tab 2 content -->
+  </ion-tab>
+
+  <ion-tab title="周边" icon-on="zbOn" icon-off="zb"  href="#/houseZb">
+    <!-- Tab 3 content -->
+  </ion-tab>
+</ion-tabs>
