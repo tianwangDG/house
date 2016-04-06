@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -156,6 +156,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       templateUrl: 'templates/houseZsl.html',
       controller:'houseZslCtrl'
     })
+    .state('houseHx',{
+      url:'houseHx/:hxId',
+      templateUrl: 'templates/houseHx.html',
+      controller: 'houseHxCtrl'
+    })
+    .state('houseLd',{
+      url:'/houseLd',
+      templateUrl: 'templates/houseLd.html',
+      controller:'houseLdCtrl'
+    })
     .state('houseZb',{
       url:'/houseZb',
       templateUrl: 'templates/houseZb.html',
@@ -171,6 +181,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       templateUrl: 'templates/hqyh.html',
       controller:'hqyhCtrl',
     });
+
+  $stateProvider
+    .state('memberInfo',{
+      url:'/memberInfo',
+      templateUrl: 'templates/memberInfo.html',
+      controller:'memberInfoCtrl'
+    })
 
 
 

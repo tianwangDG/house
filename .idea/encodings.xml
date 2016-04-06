@@ -7,6 +7,8 @@
     <file url="file://$PROJECT_DIR$/www/js/services.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/house.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/houseDetail.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/templates/houseHx.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/templates/houseLd.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/houseSjt.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/houseTabs.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/houseZb.html" charset="UTF-8" />
@@ -14,6 +16,7 @@
     <file url="file://$PROJECT_DIR$/www/templates/hqyh.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/login.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/login2.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/templates/memberInfo.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/tab-account.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/tab-chats.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/tab-dash.html" charset="UTF-8" />

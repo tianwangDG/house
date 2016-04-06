@@ -1,29 +1,30 @@
-<ion-view hide-nav-bar="true">
+<ion-view hide-nav-bar="true" style="background-color: #f8f8f8;">
   <div class="bar bar-header">
     <button class="button button-icon icon ion-ios-arrow-left" ng-click="goBack()"></button>
     <div class="h1 title" style="font-family: '华文细黑';">碧湖东岸</div>
   </div>
 
 
-  <div>
-    <ion-slides options="options" slider="slider" style="margin-top:54px;height:240px;">
-      <ion-slide-page ng-repeat="slider in sliderArr" on-release="onSliderShow($index)">
-        <img ng-src="{{slider.img}}" alt="" style="" />
+  <div style="margin-top:44px;height:33vh;background-color: #fff;padding-top:1px;">
+    <h4 style="padding-left:1em;font-size: 1.2em;font-family: '华文细黑';">户型介绍</h4>
+    <ion-slides options="options" slider="slider" style="width:100%">
+      <ion-slide-page ng-repeat="slider in sliderArr" ng-click="goToHx($index)">
+        <img ng-src="{{slider.img}}" alt="" style="border:1px solid #ddd;" />
         <p style="margin:0;" ng-bind-html="slider.name"></p>
         <p style="margin:0;">售价：<span style="color:#f62e2e;font-weight: 700;" ng-bind="slider.price"></span></p>
+        <!--<p>栋号：{{slider.ldId}}</p>-->
         <p style="margin:0;" ng-bind-html="slider.label"></p>
       </ion-slide-page>
     </ion-slides>
-    <div class="swiper-pagination"></div>
   </div>
 
-  <ion-content style="top:330px;" scroll="false">
-    <button ng-click="changeXY(300,300)">click</button>
-  <ion-scroll  direction="xy" id="map_content" style="width:375px;height:290px; overflow: scroll;" min-zoom="0.3" max-zoom="1" zooming="true">
-    <div style="width:1600px;height:1249px;background: url('img/house/ld.jpg')">
-      <div class="ldLabel" ng-repeat="ldLabel in map.ld" ng-style="{top: ldLabel.y + 'px',left: ldLabel.x + 'px'}">{{ldLabel.ldh}}</div>
-    </div>
-  </ion-scroll>
+  <ion-content style="top:52%;height:44vh;background-color: #fff;" scroll="false">
+    <h4 style="padding-left:1em;font-size: 1.2em;font-family: '华文细黑';">楼栋信息</h4>
+    <ion-scroll  direction="xy" id="map_content" style="width:100%;height:100%; overflow: scroll;" min-zoom="0.3" max-zoom="2" zooming="true">
+      <div style="width:1600px;height:1249px;background: url('img/house/ld.jpg')" ng-click="goToLd()">
+        <div class="ldLabel" ng-repeat="ldLabel in map.ld" ng-style="{top: (ldLabel.y - 50)  + 'px',left: (ldLabel.x - 44) + 'px'}">{{ldLabel.ldh}}</div>
+      </div>
+    </ion-scroll>
   </ion-content>
 
 
