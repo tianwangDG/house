@@ -1,0 +1,23 @@
+<ion-view hide-nav-bar="true" style="background-color: #f8f8f8;">
+  <div class="bar bar-header">
+    <button class="button button-icon icon ion-ios-arrow-left" ng-click="goBackIndex()"></button>
+    <div class="h1 title" style="font-family: '华文细黑';">我的叫车券</div>
+  </div>
+  <ion-content class="has-header">
+    <div style="display: table-cell;position:absolute;right:1.4em;top:.5em;">
+      <i class="icon ion-ios-paper-outline" style="font-size: 1.6em; vertical-align: text-bottom;"></i>
+      <span style="vertical-align: text-bottom;">规则说明</span>
+    </div>
+
+    <div class="padding" style="width:100%;padding-top: 2.4em;">
+      <div ng-repeat="jcq in jqcArray" style="padding:0 2em .5em 2em;">
+        <img ng-src="{{jcq.src}}" style="display: block; max-width: 100%;" />
+      </div>
+    </div>
+
+    <div>
+      <p style="font-family: '华文细黑';text-align: center;">查看已使用叫车券</p>
+    </div>
+  </ion-content>
+</ion-view>
+

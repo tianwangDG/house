@@ -188,6 +188,26 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
       templateUrl: 'templates/memberInfo.html',
       controller:'memberInfoCtrl'
     })
+    .state('memberJcq',{
+      url:'/memberJcq',
+      templateUrl: 'templates/memberJcq.html',
+      controller:'memberJcqCtrl'
+    })
+    .state('memberRecommend',{
+      url:'/memberRecommend',
+      templateUrl: 'templates/memberRecommend.html',
+      controller:'memberRecommendCtrl'
+    })
+    .state('memberFeedback',{
+      url:'/memberFeedback',
+      templateUrl: 'templates/memberFeedback.html',
+      controller:'memberFeedbackCtrl'
+    })
+    .state('calculator',{
+      url:'/calculator',
+      templateUrl: 'templates/calculator.html',
+      controller:'calculatorCtrl'
+    })
 
 
 

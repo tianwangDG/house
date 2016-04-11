@@ -2,9 +2,9 @@
   <ion-side-menus>
     <ion-side-menu side="left" class="leftSide">
       <ion-content>
-      <div class="row tx padding" style="display: table !important; width: 100% !important; height: 80px;">
+      <div class="row tx padding" style="display: table !important; width: 100% !important; height: 80px;"  ng-click="goToMemberInfo()">
         <div class="col-90 row" >
-          <div class="col-33" ng-click="goToMemberInfo()">
+          <div class="col-33">
             <img src="img/tx.jpg" />
           </div>
           <div class="col-67" style="padding-top:6px;">
@@ -19,7 +19,7 @@
 
 
       <div class="list my">
-        <a class="item item-icon-left item-icon-right" href="#">
+        <a class="item item-icon-left item-icon-right" href="#/memberJcq">
           <i class="icon ion-cash"></i>
           我的叫车券
           <span class="badge badge-assertive">3</span>
@@ -33,14 +33,14 @@
           <i class="icon ion-ios-cart"></i>
           积分商城
         </a>
-        <a class="item item-icon-left" href="#">
+        <a class="item item-icon-left" href="#/memberRecommend">
           <i class="icon ion-person-stalker"></i>
           推荐有奖
         </a>
       </div>
 
       <div class="list my">
-        <a class="item item-icon-left" href="#">
+        <a class="item item-icon-left" href="#/calculator">
           <i class="icon ion-ios-calculator-outline"></i>
           购房计算器
         </a>
@@ -48,7 +48,7 @@
           <i class="icon ion-ios-heart-outline"></i>
           我的评分
         </a>
-        <a class="item item-icon-left" href="#">
+        <a class="item item-icon-left" href="#/memberFeedback">
           <i class="icon ion-email-unread"></i>
           我的反馈
         </a>

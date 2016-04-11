@@ -13,16 +13,16 @@
     </div>
 
     <div class="list">
-      <a class="item item-icon-right" href="#"  style="display:block;border:none;width:100vw;">
+      <a class="item item-icon-right" href="#"  style="display:block;border:none;width:100vw;" ng-click="modifyNick()">
         昵称
-        <span class="item-note" ng-click="modifyNick()">
+        <span class="item-note">
           波西
         </span>
         <i class="icon ion-ios-arrow-right"></i>
       </a>
-      <a class="item item-icon-right" href="#"  style="display:block;border:none;width:100vw;">
+      <a class="item item-icon-right" href="#"  style="display:block;border:none;width:100vw;" ng-click="modifyGender()">
         性别
-        <span class="item-note" ng-click="modifyGender()">
+        <span class="item-note">
           男
         </span>
         <i class="icon ion-ios-arrow-right"></i>
@@ -34,16 +34,16 @@
         </span>
         <i class="icon ion-ios-arrow-right"></i>
       </a>
-      <a class="item item-icon-right" href="#"  style="display:block;border:none;width:100vw;">
+      <a class="item item-icon-right" href="#"  style="display:block;border:none;width:100vw;" ng-click="modifyTel()">
         手机号码
-        <span class="item-note" ng-click="modifyTel()">
+        <span class="item-note">
           18503045126
         </span>
         <i class="icon ion-ios-arrow-right"></i>
       </a>
-      <a class="item item-icon-right" href="#"  style="display:block;border:none;width:100vw;">
+      <a class="item item-icon-right" href="#"  style="display:block;border:none;width:100vw;" ng-click="modifySignature()">
         个性签名
-        <span class="item-note" ng-click="modifySignature()">
+        <span class="item-note">
           加油吧，骚年
         </span>
         <i class="icon ion-ios-arrow-right"></i>
@@ -51,16 +51,16 @@
     </div>
 
     <div class="list">
-      <a class="item item-icon-right" href="#"  style="display:block;border:none;width:100vw;">
+      <a class="item item-icon-right" href="#"  style="display:block;border:none;width:100vw;" ng-click="modifyHy()">
         行业
-        <span class="item-note" ng-click="modifyHy()">
-          互联网-软件
+        <span class="item-note">
+          {{hyName}}
         </span>
         <i class="icon ion-ios-arrow-right"></i>
       </a>
-      <a class="item item-icon-right" href="#"  style="display:block;border:none;width:100vw;">
+      <a class="item item-icon-right" href="#"  style="display:block;border:none;width:100vw;" ng-click="modifyCompany()">
         公司-职业
-        <span class="item-note" style="width:12em;overflow: hidden;" ng-click="modifyCompany()">
+        <span class="item-note" style="width:12em;overflow: hidden;">
           东莞市天高网络科技有限公司
         </span>
         <i class="icon ion-ios-arrow-right"></i>
@@ -80,16 +80,16 @@
     <ion-footer-bar style="height:12.5em;" class="bar bar-footer bar-clear padding">
       <div style="width:100%;">
         <button style="text-align: center;border-top-left-radius: 0.2em;border-top-right-radius:.2em;" ng-click="" class="button button-full button-stable row">
-          <i style="color:#eb4f38;padding-right:1em;text-align:right;" class="icon ion-camera col col-40"></i>
-          <span style="font-family:'华文细黑';color:#444;" class="col col-40">拍照</span>
+          <i style="color:#eb4f38;padding-right:1em;text-align:right;" class="icon ion-camera col"></i>
+          <span style="font-family:'华文细黑';color:#444;text-align: left;padding-left: 0em;" class="col">拍照</span>
         </button>
         <button class="button button-full button-stable row" ng-click="" style="margin-top:-10px;border-top:1px #d1d1d1 solid;text-align: center;border-bottom-left-radius: 0.2em;border-bottom-right-radius:.2em;">
-          <i class="icon ion-images col col-40" style="color:#eb4f38;padding-right:1em;text-align:right;"></i>
-          <span style="font-family:'华文细黑';color:#444;" class="col col-40">从相册选择</span>
+          <i class="icon ion-images col" style="color:#eb4f38;padding-right:1em;text-align:right;"></i>
+          <span style="font-family:'华文细黑';color:#444;text-align: left;padding-left: 0em;" class="col">相册</span>
         </button>
         <button class="button button-full button-stable row" ng-click="closeTxModal()" style="text-align: center;border-radius: .3em;">
-          <i class="icon ion-power col col-40" style="color:#eb4f38;padding-right:1em;text-align:right;"></i>
-          <span style="font-family:'华文细黑';color:#444;" class="col col-40">取消</span>
+          <i class="icon ion-power col" style="color:#eb4f38;padding-right:1em;text-align:right;"></i>
+          <span style="font-family:'华文细黑';color:#444;text-align: left;padding-left: 0em;" class="col">取消</span>
         </button>
       </div>
     </ion-footer-bar>
@@ -259,12 +259,9 @@
       <h1 class="title">行业</h1>
     </ion-header-bar>
     <ion-content>
-      <div class="list">
-        <a class="item item-icon-right" ng-repeat="hy in hyArray">
-          {{hy.name}}
-          <i class="icon ion-ios-checkmark-empty"></i>
-        </a>
-      </div>
+      <ion-list>
+        <ion-radio ng-model="hyName" ng-value="hy.name" ng-repeat="hy in hyArray" ng-click="selectHy(hy.name)">{{hy.name}}</ion-radio>
+      </ion-list>
     </ion-content>
   </div>
 </script>
