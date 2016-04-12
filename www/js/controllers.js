@@ -897,10 +897,7 @@ angular.module('starter.controllers', [])
       $state.go('tab.dash');
     }
 
-    $scope.active_content = 'gjjdk';
-    $scope.setActiveContent = function(active_content){
-      $scope.active_content = active_content;
-    }
+
 
     //封装计算函数
     $scope.js = function(hkfs,fjze,sfbl,dkze,dknx,dkll){
@@ -927,6 +924,7 @@ angular.module('starter.controllers', [])
           yjhk = Math.round(((dkze*10000*(dkll*0.01/12)*Math.pow((1+dkll*0.01/12),dkys))/(Math.pow((1+dkll*0.01/12),dkys)-1))*100)/100;
           hkze = Math.round(yjhk * dkys*100)/100;
           zflx = Math.round((hkze - dkze*10000)*100)/100;
+          hk = '月均还款';
           break;
         case '等额本金':
           var monthBJ = dkze*10000/(dknx * 12);
@@ -934,7 +932,8 @@ angular.module('starter.controllers', [])
           syhk = Math.round((monthBJ + monthBX)*100)/100;
           yjhk = syhk;  //在等额本息方式下为月均还款，在等额本金下为首月还款
           zflx = Math.round((dkze*10000 * dkll*0.01/12 * ( dkys + 1 )/2)*100)/100;
-          hkze = dkze*10000 + zflx;
+          hkze = Math.round((dkze*10000 + zflx)*100)/100;
+          hk = '首月还款';
           break;
       }
 
@@ -942,13 +941,15 @@ angular.module('starter.controllers', [])
         hkze:hkze,
         dkys:dkys,
         zflx:zflx,
-        yjhk:yjhk
+        yjhk:yjhk,
+        hk:hk
       };
     }
 
     //$scope.hkfs = '等额本息';
     $scope.hkfsArray = [{id:1,name:'等额本息'},{id:2,name:'等额本金'}]
     $scope.hkfs = '等额本息';
+    $scope.hk = '月均还款';
 
     $scope.sfblArray = [
       {id:1,name:'1成'},
@@ -998,38 +999,69 @@ angular.module('starter.controllers', [])
 
     //公积金贷款利率
     $scope.gjjDkllArray = [
-      {id:1,ll:2.75,minYear:1,maxYear:5,name:"2015年月10月24日基准利率(2.75%)"},
-      {id:2,ll:3.25,minYear:6,maxYear:30,name:"2015年月10月24日基准利率(3.25%)"}
+      {id:1,ll:2.75,minYear:0,maxYear:5,name:"2015年月10月24日基准利率(2.75%)"},
+      {id:2,ll:3.25,minYear:5,maxYear:30,name:"2015年月10月24日基准利率(3.25%)"}
     ];
 
     //商业贷款基准利率
     $scope.syjzllArray = [
-      {id:1,ll:4.35,year:1,name:'一年以下'},
-      {id:2,ll:4.75,year:5,name:'一至五年'},
-      {id:3,ll:4.90,year:6,name:'五年以上'}
+      {id:1,ll:4.35,minYear:0,maxYear:1,name:"2015年10月24日基准利率(4.35%)",label:'一年以下'},
+      {id:2,ll:4.75,minYear:1,maxYear:5,name:"2015年10月24日基准利率(4.75%)",label:'一至五年'},
+      {id:3,ll:4.90,minYear:5,maxYear:30,name:"2015年10月24日基准利率(4.9%)",label:'五年以上'}
     ];
 
     //商业贷款利率折扣
     $scope.sydkllArray = [
-      {id:1,llzk:0.70,name:"2015年10月24日利率下限（7折）"},
-      {id:2,llzk:0.85,name:"2015年10月24日利率下限（85折）"},
-      {id:3,llzk:0.88,name:"2015年10月24日利率下限（88折）"},
-      {id:4,llzk:0.90,name:"2015年10月24日利率下限（9折）"},
-      {id:5,llzk:1.10,name:"2015年10月24日利率下限（1.1倍）"}
+      {id:1,llzk:1.00,name:"2015年10月24日基准利率(4.9%)"},
+      {id:2,llzk:0.70,name:"2015年10月24日利率下限（7折）"},
+      {id:3,llzk:0.85,name:"2015年10月24日利率下限（85折）"},
+      {id:4,llzk:0.88,name:"2015年10月24日利率下限（88折）"},
+      {id:5,llzk:0.90,name:"2015年10月24日利率下限（9折）"},
+      {id:6,llzk:1.10,name:"2015年10月24日利率下限（1.1倍）"}
     ];
 
     //初始化
     $scope.fjze = 100;
     $scope.sfbl = 3;
     $scope.dknx = 20;
+    if(!$scope.dkll){
+      $scope.syjzllArray.forEach(function(syDkll){
+        if($scope.dknx > syDkll.minYear && $scope.dknx <= syDkll.maxYear ){
+          $scope.dkll = syDkll.ll;
+          $scope.dkllName = syDkll.name;
+        }
+      });
+    }
 
-    $scope.gjjDkllArray.forEach(function(gjjDkll){
-      //console.log(gjjDkll);
-      if($scope.dknx >= gjjDkll.minYear && $scope.dknx <= gjjDkll.maxYear ){
-        $scope.dkll = gjjDkll.ll;
-        $scope.dkllName = gjjDkll.name;
+    $scope.active_content = 'sydk';
+    $rootScope.active_content = 'sydk';
+    $scope.setActiveContent = function(active_content){
+      $scope.active_content = active_content;
+      $rootScope.active_content = active_content;
+
+      switch($rootScope.active_content){
+        case 'gjjdk':
+          $scope.gjjDkllArray.forEach(function(gjjDkll){
+            //console.log(gjjDkll);
+            if($scope.dknx >= gjjDkll.minYear && $scope.dknx <= gjjDkll.maxYear ){
+              $scope.dkll = gjjDkll.ll;
+              $scope.dkllName = gjjDkll.name;
+            }
+          });
+          break;
+        case 'sydk':
+          $scope.syjzllArray.forEach(function(syDkll){
+            if($scope.dknx > syDkll.minYear && $scope.dknx <= syDkll.maxYear ){
+              $scope.dkll = syDkll.ll;
+              $scope.dkllName = syDkll.name;
+            }
+          });
+          break;
       }
-    });
+
+    }
+
+
 
 
     //首付比例
@@ -1073,16 +1105,58 @@ angular.module('starter.controllers', [])
 
     $scope.selectDknx = function(dknxId){
       $scope.dknx = parseInt(dknxId);
-
-      //公积金利率确定
-      $scope.gjjDkllArray.forEach(function(gjjDkll){
-        if($scope.dknx >= gjjDkll.minYear && $scope.dknx <= gjjDkll.maxYear ){
-          $scope.dkll = gjjDkll.ll;
-          $scope.dkllName = gjjDkll.name;
-        }
-      });
+      //利率确定
+      switch($rootScope.active_content){
+        case 'gjjdk':
+          //console.log($rootScope.active_content);
+          $scope.gjjDkllArray.forEach(function(gjjDkll){
+            if($scope.dknx > gjjDkll.minYear && $scope.dknx <= gjjDkll.maxYear ){
+              $scope.dkll = gjjDkll.ll;
+              $scope.dkllName = gjjDkll.name;
+            }
+          });
+          break;
+        case 'sydk':
+          //console.log($rootScope.active_content);
+          $scope.syjzllArray.forEach(function(syDkll){
+            if($scope.dknx > syDkll.minYear && $scope.dknx <= syDkll.maxYear ){
+              $scope.dkll = syDkll.ll;
+              $scope.dkllName = syDkll.name;
+            }
+          });
+          break;
+      }
       $scope.closeDknxModal();
     }
+
+
+    //商业贷款利率
+    $ionicModal.fromTemplateUrl('sydkllModal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.sydkllModal = modal;
+    })
+    $scope.openSydkllModal = function() {
+      $scope.sydkllModal.show();
+    }
+    $scope.closeSydkllModal = function() {
+      return $scope.sydkllModal.hide();
+    };
+    $scope.$on('$destroy', function() {
+      $scope.sydkllModal.remove();
+    });
+
+    $scope.selectSydkll = function(sydkllId){
+      $scope.sydkllId = parseInt(sydkllId);
+      //利率确定
+      $scope.sydkzk = $scope.sydkllArray[$scope.sydkllId - 1].llzk;
+      $scope.dkllName = $scope.sydkllArray[$scope.sydkllId - 1].name;
+
+      $scope.closeSydkllModal();
+    }
+
+
 
     var getDkze = function(){
       $scope.dkze = Math.round($scope.fjze * (1 - $scope.sfbl/10)*100)/100;
@@ -1098,13 +1172,27 @@ angular.module('starter.controllers', [])
     //月均还款
     $scope.yjhk = 0.00;
 
+    //商业贷款折扣初始化
+    if(!$scope.sydkzk){
+      $scope.sydkzk = 1.00;
+    }
 
-    $scope.gjjJs = function(){
-      var result = $scope.js($scope.hkfs,$scope.fjze,$scope.sfbl,$scope.dkze,$scope.dknx,$scope.dkll);
+
+    $scope.sydkJs = function(){
+      //console.log($scope.hkfs);
+      //console.log($scope.fjze);
+      //console.log($scope.sfbl);
+      //console.log($scope.dkze);
+      //console.log($scope.dknx);
+      //console.log($scope.dkll);
+      //console.log($scope.sydkzk);
+
+      var result = $scope.js($scope.hkfs,$scope.fjze,$scope.sfbl,$scope.dkze,$scope.dknx,$scope.dkll * $scope.sydkzk);
       $scope.hkze = result.hkze;
       $scope.dkys = result.dkys;
       $scope.zflx = result.zflx;
       $scope.yjhk = result.yjhk;
+      $scope.hk = result.hk;
     };
 
 
