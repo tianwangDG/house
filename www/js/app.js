@@ -14,7 +14,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $compileProvider) {
 
   $ionicConfigProvider.platform.ios.tabs.style('standard');
   $ionicConfigProvider.platform.ios.tabs.position('bottom');
@@ -29,6 +29,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
 
   $ionicConfigProvider.platform.ios.views.transition('ios');
   $ionicConfigProvider.platform.android.views.transition('android');
+
+  $compileProvider.aHrefSanitizationWhitelist(/^\s*(geo|mailto|tel|maps):/);
 
 
   // Ionic uses AngularUI Router which uses the concept of states
@@ -65,7 +67,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
       }
     }
   })
-
+  //关注
   .state('tab.chats', {
       url: '/chats',
       views: {
@@ -75,15 +77,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
+
+
 
   .state('tab.account', {
     url: '/account',
@@ -207,6 +202,17 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
       url:'/calculator',
       templateUrl: 'templates/calculator.html',
       controller:'calculatorCtrl'
+    })
+    .state('call',{
+      url:'/call',
+      templateUrl: 'templates/call.html',
+      controller:'callCtrl'
+    })
+
+    .state('pk', {
+      url: '/pk?param',
+      templateUrl: 'templates/pk.html',
+      controller: 'pkCtrl'
     })
 
 
