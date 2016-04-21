@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope,$rootScope,$state) {
+.controller('DashCtrl', function($scope,$rootScope,$state,$http) {
     $scope.goToMemberInfo = function(){
       $state.go('memberInfo');
     };
@@ -12,78 +12,16 @@ angular.module('starter.controllers', [])
       {id:4,title:'slider4',src:'img/sliders/slider4.jpg'}
     ];
 
-    $scope.fcData = [
-      {id:1,name:'皇庭壹号',zt:'毛坯',qy:'东城区',zj:500000,fx:'三房',thumbnail:'img/lp/lp2.jpg'},
-      {id:2,name:'东莞人家',zt:'简装',qy:'南城区',zj:1800000,fx:'两房',thumbnail:'img/lp/lp1.jpg'},
-      {id:3,name:'来座山',zt:'简装',qy:'东城区',zj:2200000,fx:'一房',thumbnail:'img/lp/lp2.jpg'},
-      {id:4,name:'御湾国际',zt:'简装',qy:'南城区',zj:2700000,fx:'一房',thumbnail:'img/lp/lp1.jpg'},
-      {id:5,name:'东城中心',zt:'毛坯',qy:'东城区',zj:1900000,fx:'五房',thumbnail:'img/lp/lp2.jpg'},
-      {id:6,name:'帝景花园',zt:'清水',qy:'南城区',zj:2800000,fx:'一房',thumbnail:'img/lp/lp1.jpg'},
-      {id:7,name:'北大一号',zt:'精装',qy:'万江区',zj:1550000,fx:'两房',thumbnail:'img/lp/lp2.jpg'},
-      {id:8,name:'万江首府',zt:'精装',qy:'万江区',zj:400000,fx:'四房',thumbnail:'img/lp/lp1.jpg'},
-      {id:9,name:'帝景国际',zt:'毛坯',qy:'万江区',zj:1080000,fx:'三房',thumbnail:'img/lp/lp2.jpg'},
-      {id:10,name:'万佳花园',zt:'毛坯',qy:'南城区',zj:500000,fx:'四房',thumbnail:'img/lp/lp1.jpg'},
-      {id:11,name:'水岸华庭',zt:'毛坯',qy:'厚街区',zj:1000000,fx:'三房',thumbnail:'img/lp/lp2.jpg'},
-      {id:12,name:'常平首府',zt:'豪装',qy:'厚街区',zj:700000,fx:'三房',thumbnail:'img/lp/lp1.jpg'},
-      {id:13,name:'都市华府',zt:'清水',qy:'南城区',zj:1800000,fx:'两房',thumbnail:'img/lp/lp2.jpg'},
-      {id:14,name:'东方华府',zt:'清水',qy:'东城区',zj:2300000,fx:'五房',thumbnail:'img/lp/lp1.jpg'},
-      {id:15,name:'皇庭国际',zt:'豪装',qy:'万江区',zj:1300000,fx:'两房',thumbnail:'img/lp/lp2.jpg'},
-      {id:16,name:'碧湖东岸',zt:'豪装',qy:'市辖区',zj:1000000,fx:'三房',thumbnail:'img/lp/lp1.jpg'}
-    ];
-
-    $scope.ztItem = [
-      {id:1,lx:'zt',name:'毛坯'},
-      {id:2,lx:'zt',name:'清水'},
-      {id:3,lx:'zt',name:'简装'},
-      {id:4,lx:'zt',name:'精装'},
-      {id:5,lx:'zt',name:'豪装'}
-    ];
-    $scope.qyItem = [
-      {id:1,lx:'qy',name:'不限'},
-      {id:2,lx:'qy',name:'市辖区'},
-      {id:3,lx:'qy',name:'东城区'},
-      {id:4,lx:'qy',name:'南城区'},
-      {id:5,lx:'qy',name:'万江区'},
-      {id:6,lx:'qy',name:'厚街区'}
-    ];
-    $scope.zjItem = [
-      {id:1,lx:'zj',name:'100万以下'},
-      {id:2,lx:'zj',name:'100-150万'},
-      {id:3,lx:'zj',name:'150-200万'},
-      {id:4,lx:'zj',name:'200-250万'},
-      {id:5,lx:'zj',name:'250-300万'}
-    ];
-    $scope.fxItem = [
-      {id:1,lx:'fx',name:'一房'},
-      {id:2,lx:'fx',name:'两房'},
-      {id:3,lx:'fx',name:'三房'},
-      {id:4,lx:'fx',name:'四房'},
-      {id:5,lx:'fx',name:'五房'}
-    ];
-    $scope.tsItem = [
-      {id:1,lx:'ts',name:'不限'},
-      {id:2,lx:'ts',name:'精装修'},
-      {id:3,lx:'ts',name:'带花园'},
-      {id:4,lx:'ts',name:'近地铁'},
-      {id:5,lx:'ts',name:'带飘窗'},
-      {id:6,lx:'ts',name:'不限购'}
-    ];
-    $scope.smItem = [
-      {id:1,lx:'sm',name:'不限'},
-      {id:2,lx:'sm',name:'即将开盘'},
-      {id:3,lx:'sm',name:'排卡中'},
-      {id:4,lx:'sm',name:'在售'},
-      {id:5,lx:'sm',name:'售罄'}
-    ];
-    $scope.filterType = [
-      {id:1,lx:'zt',name:'状态'},
-      {id:2,lx:'qy',name:'区域'},
-      {id:3,lx:'zj',name:'总价'},
-      {id:4,lx:'fx',name:'房型'},
-      {id:5,lx:'ts',name:'特色'},
-      {id:6,lx:'sm',name:'售卖状态'},
-    ];
-
+            
+    $http.get("http://house_server/houses").success(function(response){
+            $scope.fcData = response["fcData"];
+            $scope.ztItem = response["ztItem"];
+            $scope.qyItem = response["qyItem"];
+            $scope.zjItem = response["zjItem"];
+            $scope.fxItem = response["fxItem"];
+            $scope.tsItem = response["tsItem"];
+            $scope.smItem = response["smItem"];
+            $scope.filterType = response["filterType"];
 
     $scope.getFilterFactor = function($filterFactor){
       switch($filterFactor){
@@ -333,6 +271,10 @@ angular.module('starter.controllers', [])
       console.log($scope.result);
 
     }
+                                                    
+                                                    
+    //收到请求返回了了
+    });
 
 
   })
