@@ -14,14 +14,14 @@ angular.module('starter.controllers', [])
 
             
     $http.get("http://house_server").success(function(response){
-            $scope.fcData = response["data"]["fcData"];
-            $scope.ztItem = response["data"]["ztItem"];
-            $scope.qyItem = response["data"]["qyItem"];
-            $scope.zjItem = response["data"]["zjItem"];
-            $scope.fxItem = response["data"]["fxItem"];
-            $scope.tsItem = response["data"]["tsItem"];
-            $scope.smItem = response["data"]["smItem"];
-            $scope.filterType = response["data"]["filterType"];
+    $scope.result = response["data"]["fcData"];
+    $scope.ztItem = response["data"]["ztItem"];
+    $scope.qyItem = response["data"]["qyItem"];
+    $scope.zjItem = response["data"]["zjItem"];
+    $scope.fxItem = response["data"]["fxItem"];
+    $scope.tsItem = response["data"]["tsItem"];
+    $scope.smItem = response["data"]["smItem"];
+    $scope.filterType = response["data"]["filterType"];
 
     $scope.getFilterFactor = function($filterFactor){
       switch($filterFactor){
@@ -40,10 +40,6 @@ angular.module('starter.controllers', [])
       }
       return $scope.items;
     }
-
-
-
-    $scope.result = $scope.fcData;
 
     $scope.showFilterBox = false;
     $scope.showMoreFilterBox = false;
@@ -65,16 +61,10 @@ angular.module('starter.controllers', [])
 
     }
 
-
-
-
     $scope.showMoreFilter = function($filterFactor) {
       $scope.showFilterBox = false;
-
       $scope.showMoreFilterBox = !$scope.showMoreFilterBox;
-
       $scope.moreItems = $scope.tsItem;
-
       $scope.moreFilterItem = function($filterFactor) {
         switch ($filterFactor) {
           case 'ts':
@@ -85,199 +75,15 @@ angular.module('starter.controllers', [])
             break;
         }
       }
-
     }
-
-
 
     $scope.filterZt = function($lx,$index){
-    console.log($lx+$index);
-    $http.get("http://house_server/houses/search?name="+$lx+"&value="+$index).success(function(response){
-                                                                               alert(response);
-    });
-      switch($lx) {
-        case 'zt':
-          $scope.result = [];
-          switch ($index){
-            case 1:
-              $scope.fcData.forEach(function(e){
-                if(e.zt == '毛坯'){
-                  $scope.result.push(e);
-                }
-              })
-              break;
-            case 2:
-              $scope.fcData.forEach(function(e){
-                if(e.zt == '清水'){
-                  $scope.result.push(e);
-                }
-              })
-              break;
-            case 3:
-              $scope.fcData.forEach(function(e){
-                if(e.zt == '简装'){
-                  $scope.result.push(e);
-                }
-              })
-              break;
-            case 4:
-              $scope.fcData.forEach(function(e){
-                if(e.zt == '精装'){
-                  $scope.result.push(e);
-                }
-              })
-              break;
-            case 5:
-              $scope.fcData.forEach(function(e){
-                if(e.zt == '豪装'){
-                  $scope.result.push(e);
-                }
-              })
-              break;
-          }
-          $scope.showFilterBox = false;
-          $scope.showMoreFilterBox = false;
-          break;
-
-        case 'qy':
-          $scope.result = [];
-          switch ($index){
-            case 1:
-              $scope.result = $scope.fcData;
-              break;
-            case 2:
-              $scope.fcData.forEach(function(e){
-                if(e.qy == '市辖区'){
-                  $scope.result.push(e);
-                }
-              })
-              break;
-            case 3:
-              $scope.fcData.forEach(function(e){
-                if(e.qy == '东城区'){
-                  $scope.result.push(e);
-                }
-              })
-              break;
-            case 4:
-              $scope.fcData.forEach(function(e){
-                if(e.qy == '南城区'){
-                  $scope.result.push(e);
-                }
-              })
-              break;
-            case 5:
-              $scope.fcData.forEach(function(e){
-                if(e.qy == '万江区'){
-                  $scope.result.push(e);
-                }
-              })
-              break;
-            case 6:
-              $scope.fcData.forEach(function(e){
-                if(e.qy == '厚街区'){
-                  $scope.result.push(e);
-                }
-              })
-              break;
-          }
-          $scope.showFilterBox = false;
-          $scope.showMoreFilterBox = false;
-          break;
-
-        case 'zj':
-          $scope.result = [];
-          switch ($index){
-            case 5:
-              $scope.fcData.forEach(function(e){
-                if(e.zj > 2500000){
-                  $scope.result.push(e);
-                }
-              })
-              break;
-            case 4:
-              $scope.fcData.forEach(function(e){
-                if(e.zj > 2000000 && e.zj <= 2500000){
-                  $scope.result.push(e);
-                }
-              })
-              break;
-            case 3:
-              $scope.fcData.forEach(function(e){
-                if(e.zj > 1500000 && e.zj <= 2000000){
-                  $scope.result.push(e);
-                }
-              })
-              break;
-            case 2:
-              $scope.fcData.forEach(function(e){
-                if(e.zj> 1000000 && e.zj <= 1500000){
-                  $scope.result.push(e);
-                }
-              })
-              break;
-            case 1:
-              $scope.fcData.forEach(function(e){
-                if(e.zj < 1000000){
-                  $scope.result.push(e);
-                }
-              })
-              break;
-          }
-          $scope.showFilterBox = false;
-          $scope.showMoreFilterBox = false;
-          break;
-
-        case 'fx':
-          $scope.result = [];
-          switch ($index){
-            case 1:
-              $scope.fcData.forEach(function(e){
-                if(e.fx == '一房'){
-                  $scope.result.push(e);
-                }
-              })
-              break;
-            case 2:
-              $scope.fcData.forEach(function(e){
-                if(e.fx == '两房'){
-                  $scope.result.push(e);
-                }
-              })
-              break;
-            case 3:
-              $scope.fcData.forEach(function(e){
-                if(e.fx == '三房'){
-                  $scope.result.push(e);
-                }
-              })
-              break;
-            case 4:
-              $scope.fcData.forEach(function(e){
-                if(e.fx == '四房'){
-                  $scope.result.push(e);
-                }
-              })
-              break;
-            case 5:
-              $scope.fcData.forEach(function(e){
-                if(e.fx == '五房'){
-                  $scope.result.push(e);
-                }
-              })
-              break;
-          }
-          $scope.showFilterBox = false;
-          $scope.showMoreFilterBox = false;
-          break;
-
-      }
-      console.log($scope.result);
-
+        $http.get("http://house_server/home/house?name="+$lx+"&value="+$index).success(function(response){
+            $scope.result=response["data"];
+            $scope.showFilterBox = false;
+            $scope.showMoreFilterBox = false;
+        });
     }
-                                                    
-                                                    
-    //收到请求返回了了
     });
 
 
