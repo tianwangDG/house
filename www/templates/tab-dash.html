@@ -116,17 +116,6 @@
         </div>
 
         <div class="filter">
-          <!--<div class="filter_header">-->
-            <!--<h4 ng-click="showFilter('zt')">状态</h4><i class="icon {{arrowType}}"></i>-->
-            <!--<span> | </span>-->
-            <!--<h4 ng-click="showFilter('qy')">区域</h4>-->
-            <!--<span> | </span>-->
-            <!--<h4 ng-click="showFilter('zj')">总价</h4>-->
-            <!--<span> | </span>-->
-            <!--<h4 ng-click="showFilter('fx')">房型</h4>-->
-            <!--<span> | </span>-->
-            <!--<h4 ng-click="showMoreFilter()">更多</h4>-->
-          <!--</div>-->
           <div class="filter_header">
             <h4 class="filter_cate" ng-repeat="ft in filterType | limitTo:4 track by $index" ng-click="showFilter(ft.id,ft.lx,$index)">{{ft.name}} <i class="icon " ng-class="{true:'ion-arrow-down-b allColor', false:'ion-arrow-up-b'}[($index+1) == key]"></i></h4>
             <h4 ng-click="showMoreFilter()">更多 <i class="icon"  ng-class="{true:'ion-arrow-down-b allColor', false:'ion-arrow-up-b'}[showMoreFilterBox]"></i></h4>
@@ -161,7 +150,7 @@
           <ul class="list">
             <li class="item row" ng-repeat="lp in result">
               <div class="col-33 padding">
-                <img ng-src="{{lp.thumbnail}}" width="100%" />
+                <img ng-src="http://house_server/{{lp.thumbnail}}" width="100%" />
               </div>
               <div class="col-67 padding-top">
                 <h4>{{lp.name}}</h4>

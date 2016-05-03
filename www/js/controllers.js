@@ -13,15 +13,15 @@ angular.module('starter.controllers', [])
     ];
 
             
-    $http.get("http://house_server/houses").success(function(response){
-            $scope.fcData = response["fcData"];
-            $scope.ztItem = response["ztItem"];
-            $scope.qyItem = response["qyItem"];
-            $scope.zjItem = response["zjItem"];
-            $scope.fxItem = response["fxItem"];
-            $scope.tsItem = response["tsItem"];
-            $scope.smItem = response["smItem"];
-            $scope.filterType = response["filterType"];
+    $http.get("http://house_server").success(function(response){
+            $scope.fcData = response["data"]["fcData"];
+            $scope.ztItem = response["data"]["ztItem"];
+            $scope.qyItem = response["data"]["qyItem"];
+            $scope.zjItem = response["data"]["zjItem"];
+            $scope.fxItem = response["data"]["fxItem"];
+            $scope.tsItem = response["data"]["tsItem"];
+            $scope.smItem = response["data"]["smItem"];
+            $scope.filterType = response["data"]["filterType"];
 
     $scope.getFilterFactor = function($filterFactor){
       switch($filterFactor){
@@ -91,6 +91,10 @@ angular.module('starter.controllers', [])
 
 
     $scope.filterZt = function($lx,$index){
+    console.log($lx+$index);
+    $http.get("http://house_server/houses/search?name="+$lx+"&value="+$index).success(function(response){
+                                                                               alert(response);
+    });
       switch($lx) {
         case 'zt':
           $scope.result = [];
