@@ -58,7 +58,7 @@
     <div class="row" style="padding-top: .8em;">
       <div class="col-20" style="display:flex;justify-content:center;align-items:center;border: 1px solid #ccc;text-align: center;">对比项目</div>
       <div class="col-80 row" style="padding-top:0;padding-bottom: 0;">
-        <div class="col" ng-repeat="lpItem in pklp" style="position:relative;margin:0 .3em;border:1px solid #ccc;box-shadow: 1px 1px 2px #d5d5d5;">
+        <div class="col" ng-repeat="lpItem in pkhxLpArr" style="position:relative;margin:0 .3em;border:1px solid #ccc;box-shadow: 1px 1px 2px #d5d5d5;">
           <span style="display:block;position:absolute;right:0;top:-0.2em;"><i class="ion ion-ios-close" style="color:#fe6553;font-size: 1.2em;"></i></span>
           <img ng-src="{{lpItem.thumbnail}}" style="display:block;width:100%;" />
           <h4 style="font-family:'华文细黑';font-size: 1em;margin-top:0;margin-bottom: 0;">{{lpItem.name}}</h4>
@@ -78,7 +78,7 @@
       </div>
 
       <div class="col-80 row" style="background-color: #eee;padding:0;margin:0;">
-        <div class="col list" ng-repeat="lpItem in pklp" style="padding:0;margin:0;">
+        <div class="col list" ng-repeat="lpItem in pkhxLpArr" style="padding:0;margin:0;">
             <li class="item" style="font-size: 1em;line-height: 2em;">{{lpItem.lpPrice}}</li>
             <li class="item" style="font-size: 1em;line-height: 2em;">{{lpItem.zt}}</li>
             <li class="item" style="font-size: 1em;line-height: 2em;">{{lpItem.jzjl}}</li>
@@ -111,7 +111,7 @@
     <div class="row" style="padding-top: .8em;">
       <div class="col-20" style="display:flex;justify-content:center;align-items:center;border: 1px solid #ccc;text-align: center;">对比项目</div>
       <div class="col-80 row" style="padding-top:0;padding-bottom: 0;">
-        <div class="col" ng-repeat="lpItem in pklp" style="position:relative;margin:0 .3em;border:1px solid #ccc;box-shadow: 1px 1px 2px #d5d5d5;">
+        <div class="col" ng-repeat="lpItem in pkhxLpArr" style="position:relative;margin:0 .3em;border:1px solid #ccc;box-shadow: 1px 1px 2px #d5d5d5;">
           <span style="display:block;position:absolute;right:0;top:-0.2em;"><i class="ion ion-ios-close" style="color:#fe6553;font-size: 1.2em;"></i></span>
           <img ng-src="{{lpItem.thumbnail}}" style="display:block;width:100%;" />
           <h4 style="font-family:'华文细黑';font-size: 1em;margin-top:0;margin-bottom: 0;">{{lpItem.name}}</h4>
@@ -124,14 +124,14 @@
     </div>
 
     <div class="row basicPk">
-      <div class="col col-20">
+      <div class="col-20">
         <ul class="list" style="padding:0;margin:0;">
           <li class="item" ng-repeat="field in comparePt" style="font-size: 1em;line-height: 2em;">{{field.field}}</li>
         </ul>
       </div>
 
-      <div class="col col-80 row" style="background-color: #eee;padding:0;margin:0;">
-        <div class="col list" ng-repeat="lpItem in pklp" style="padding:0;margin:0;">
+      <div class="col-80 row" style="background-color: #eee;padding:0;margin:0;">
+        <div class="col list" ng-repeat="lpItem in pkhxLpArr" style="padding:0;margin:0;">
           <li class="item" style="font-size: 1em;line-height: 2em;">{{lpItem.jlzx}}</li>
           <li class="item" style="font-size: 1em;line-height: 2em;">{{lpItem.jlqg}}</li>
           <li class="item" style="font-size: 1em;line-height: 2em;">{{lpItem.jlxx}}</li>
@@ -146,18 +146,23 @@
 
   <!--房屋户型开始-->
   <ion-content has-header="true" class="has-subheader pk" ng-show="active_content=='fwhx'">
-    <div class="row" style="padding-left:0;padding-right:0;border-bottom: 1px solid #ccc;padding-bottom:0;">
-      <div class="col col-25" style="background-color: #eee;padding:0;">
+    <div class="row" style="padding:0;margin-bottom: 1em;border-bottom: 1px solid #ddd;" ng-repeat="pkhxLp in pkhxLpArr track by $index">
+      <div class="col-35" style="padding:0;">
+        <h3 style="font-family: '微软雅黑';font-size: 1.4em;padding-top:0.6em;padding-left: 0.4em;">{{pkhxLp.name}}-{{JSON.stringify($index)}}</h3>
         <div class="list" style="padding:0;margin:0;">
-          <li class="item" style="padding:0.3em;font-size: 1em;line-height: 2em;border-left:none;border-right:none;">户型：</li>
-          <li class="item" style="padding:0.3em;font-size: 1em;line-height: 2em;border-left:none;border-right:none;">座落：</li>
-          <li class="item" style="padding:0.3em;font-size: 1em;line-height: 2em;border-left:none;border-right:none;">单元：</li>
-          <li class="item" style="padding:0.3em;font-size: 1em;line-height: 2em;border-left:none;border-right:none;">层数：</li>
-          <li class="item" style="padding:0.3em;font-size: 1em;line-height: 2em;border-left:none;border-right:none;">面积：</li>
-        </div>
+          <li class="item" style="padding:0.3em;font-size: 1em;line-height: 2em;border-left:none;border-right:none;border-top: none;">户型：{{pkhxLp.allHx[hxIndex].name}}</li>
+          <li class="item" style="padding:0.3em;font-size: 1em;line-height: 2em;border-left:none;border-right:none;">座落：{{pkhxLp.allHx[hxIndex].ldName}}</li>
+          <li class="item" style="padding:0.3em;font-size: 1em;line-height: 2em;border-left:none;border-right:none;">单元：{{pkhxLp.allHx[hxIndex].dy}}</li>
+          <li class="item" style="padding:0.3em;font-size: 1em;line-height: 2em;border-left:none;border-right:none;">层数：{{pkhxLp.allHx[hxIndex].cs}}</li>
+          <li class="item" style="padding:0.3em;font-size: 1em;line-height: 2em;border-left:none;border-right:none;">面积：{{pkhxLp.allHx[hxIndex].mj}}</li>
+        </div>{{pk}}
       </div>
-      <div class="col col-70" style="">
-        11111111111dsfsfdsfdsfsdfsf
+      <div class="col-60" style="padding-left: 10px;">
+        <ion-slides id="ionSlides" options="options" slider="$index" style="width:300px;height:200px;" delegate-handle="hxHandle">
+          <ion-slide-page ng-repeat="pkhxItem in pkhxItemArr" style="display:flex;justify-content: flex-start;align-items: center;">
+            <img ng-src="{{pkhxItem.img}}" alt="" style="border:1px solid #ddd;" />
+          </ion-slide-page>
+        </ion-slides>
       </div>
     </div>
   </ion-content>

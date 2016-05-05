@@ -1,5 +1,13 @@
 angular.module('starter.controllers', [])
 
+.filter('lpFilter', function(){
+
+    return function() {
+
+    };
+
+})
+
 .controller('DashCtrl', function($scope,$rootScope,$state) {
     $scope.goToMemberInfo = function(){
       $state.go('memberInfo');
@@ -341,7 +349,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('ChatsCtrl', function($scope, $ionicModal, $ionicHistory, $ionicPopup, $state) {
+.controller('ChatsCtrl', function($scope, $ionicModal, $ionicHistory, $ionicPopup, $state,ionicDatePicker) {
 
 
 
@@ -398,6 +406,30 @@ angular.module('starter.controllers', [])
       $scope.bookLpName = selectedLp;
       return $scope.BookLpModal.hide();
     }
+
+    //日期选择
+    function getLocalTime(nS) {
+      return new Date(parseInt(nS)).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
+    }
+    //alert(getLocalTime(1177824835));
+
+    var ipObj1 = {
+      callback: function (val) {  //Mandatory
+        console.log('Return value from the datepicker popup is : ' + val, new Date(val));
+        $scope.selectedDate = val;
+        console.log(getLocalTime($scope.selectedDate));
+      },
+      from: new Date(2016, 1, 1), //Optional
+      to: new Date(2030, 12, 31), //Optional
+      inputDate: new Date(),      //Optional
+      mondayFirst: true,          //Optional
+      closeOnSelect: false,       //Optional
+      templateType: 'popup'       //Optional
+    };
+
+    $scope.openDatePicker = function(){
+      ionicDatePicker.openDatePicker(ipObj1);
+    };
 
 
 
@@ -470,7 +502,7 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('pkCtrl', function($scope,$ionicHistory,$stateParams){
+.controller('pkCtrl', function($scope,$ionicHistory,$stateParams, $ionicSlideBoxDelegate){
     $scope.goBack = function () {
       $ionicHistory.goBack();
     }
@@ -482,7 +514,7 @@ angular.module('starter.controllers', [])
 
 
 
-    console.log($stateParams.param);
+    //console.log($stateParams.param);
 
     $scope.compareFields = [
       {id:1,field:"参考价格"},
@@ -506,43 +538,107 @@ angular.module('starter.controllers', [])
     ];
 
     $scope.pklp = [
-      {id:1,name:'皇庭壹号',zt:'毛坯',qy:'东城区',zj:500000,fx:'三房',thumbnail:'img/lp/lp1.jpg',isChecked:false,lpPrice:'7000元',jzjl:'2016年9月',cqnx:'70年',ghhs:'1500',ghcw:'1200',rjl:'5.32',lhl:'30%',sdrq:'民水民电',develop:'正德集团',jlzx:'0.8km',jlqg:'3km','jlxx':'0.6km',jlyy:'2.0km',jlsc:'0.4km'},
-      {id:7,name:'北大一号',zt:'精装',qy:'万江区',zj:1550000,fx:'两房',thumbnail:'img/lp/lp2.jpg',isChecked:false,lpPrice:'6000元',jzjl:'2015年8月',cqnx:'50年',ghhs:'2500',ghcw:'2200',rjl:'5.32',lhl:'35%',sdrq:'商业用途',develop:'富盈集团',jlzx:'0.9km',jlqg:'3.2km','jlxx':'1.2km',jlyy:'2.2km',jlsc:'1.4km'},
-      {id:9,name:'帝景国际',zt:'毛坯',qy:'万江区',zj:1080000,fx:'三房',thumbnail:'img/lp/lp1.jpg',isChecked:false,lpPrice:'7800元',jzjl:'2016年1月',cqnx:'60年',ghhs:'1800',ghcw:'1000',rjl:'5.32',lhl:'40%',sdrq:'民水民电',develop:'万科地产',jlzx:'0.6km',jlqg:'2.3km','jlxx':'0.5km',jlyy:'2.3km',jlsc:'4.4km'}
+      {id:1,k:'a',name:'皇庭壹号',zt:'毛坯',qy:'东城区',zj:500000,fx:'三房',thumbnail:'img/lp/lp1.jpg',isChecked:false,lpPrice:'7000元',jzjl:'2016年9月',cqnx:'70年',ghhs:'1500',ghcw:'1200',rjl:'5.32',lhl:'30%',sdrq:'民水民电',develop:'正德集团',jlzx:'0.8km',jlqg:'3km','jlxx':'0.6km',jlyy:'2.0km',jlsc:'0.4km'},
+      {id:2,k:'b',name:'帝景国际',zt:'毛坯',qy:'万江区',zj:1080000,fx:'三房',thumbnail:'img/lp/lp1.jpg',isChecked:false,lpPrice:'7800元',jzjl:'2016年1月',cqnx:'60年',ghhs:'1800',ghcw:'1000',rjl:'5.32',lhl:'40%',sdrq:'民水民电',develop:'万科地产',jlzx:'0.6km',jlqg:'2.3km','jlxx':'0.5km',jlyy:'2.3km',jlsc:'4.4km'},
+      {id:3,k:'c',name:'北大一号',zt:'毛坯',qy:'东城区',zj:500000,fx:'三房',thumbnail:'img/lp/lp1.jpg',isChecked:false,lpPrice:'7000元',jzjl:'2016年9月',cqnx:'70年',ghhs:'1500',ghcw:'1200',rjl:'5.32',lhl:'30%',sdrq:'民水民电',develop:'正德集团',jlzx:'0.8km',jlqg:'3km','jlxx':'0.6km',jlyy:'2.0km',jlsc:'0.4km'},
+      {id:4,k:'d',name:'帝景国际',zt:'毛坯',qy:'万江区',zj:1080000,fx:'三房',thumbnail:'img/lp/lp1.jpg',isChecked:false,lpPrice:'7800元',jzjl:'2016年1月',cqnx:'60年',ghhs:'1800',ghcw:'1000',rjl:'5.32',lhl:'40%',sdrq:'民水民电',develop:'万科地产',jlzx:'0.6km',jlqg:'2.3km','jlxx':'0.5km',jlyy:'2.3km',jlsc:'4.4km'},
+      {id:5,k:'e',name:'皇庭壹号',zt:'毛坯',qy:'东城区',zj:500000,fx:'三房',thumbnail:'img/lp/lp1.jpg',isChecked:false,lpPrice:'7000元',jzjl:'2016年9月',cqnx:'70年',ghhs:'1500',ghcw:'1200',rjl:'5.32',lhl:'30%',sdrq:'民水民电',develop:'正德集团',jlzx:'0.8km',jlqg:'3km','jlxx':'0.6km',jlyy:'2.0km',jlsc:'0.4km'},
+      {id:6,k:'f',name:'帝景国际',zt:'毛坯',qy:'万江区',zj:1080000,fx:'三房',thumbnail:'img/lp/lp1.jpg',isChecked:false,lpPrice:'7800元',jzjl:'2016年1月',cqnx:'60年',ghhs:'1800',ghcw:'1000',rjl:'5.32',lhl:'40%',sdrq:'民水民电',develop:'万科地产',jlzx:'0.6km',jlqg:'2.3km','jlxx':'0.5km',jlyy:'2.3km',jlsc:'4.4km'},
+      {id:7,k:'g',name:'北大一号',zt:'精装',qy:'万江区',zj:1550000,fx:'两房',thumbnail:'img/lp/lp2.jpg',isChecked:false,lpPrice:'6000元',jzjl:'2015年8月',cqnx:'50年',ghhs:'2500',ghcw:'2200',rjl:'5.32',lhl:'35%',sdrq:'商业用途',develop:'富盈集团',jlzx:'0.9km',jlqg:'3.2km','jlxx':'1.2km',jlyy:'2.2km',jlsc:'1.4km'},
+      {id:8,k:'h',name:'帝景国际',zt:'毛坯',qy:'万江区',zj:1080000,fx:'三房',thumbnail:'img/lp/lp1.jpg',isChecked:false,lpPrice:'7800元',jzjl:'2016年1月',cqnx:'60年',ghhs:'1800',ghcw:'1000',rjl:'5.32',lhl:'40%',sdrq:'民水民电',develop:'万科地产',jlzx:'0.6km',jlqg:'2.3km','jlxx':'0.5km',jlyy:'2.3km',jlsc:'4.4km'},
+      {id:9,k:'i',name:'北大一号',zt:'精装',qy:'万江区',zj:1550000,fx:'两房',thumbnail:'img/lp/lp2.jpg',isChecked:false,lpPrice:'6000元',jzjl:'2015年8月',cqnx:'50年',ghhs:'2500',ghcw:'2200',rjl:'5.32',lhl:'35%',sdrq:'商业用途',develop:'富盈集团',jlzx:'0.9km',jlqg:'3.2km','jlxx':'1.2km',jlyy:'2.2km',jlsc:'1.4km'},
+      {id:10,k:'j',name:'帝景国际',zt:'毛坯',qy:'万江区',zj:1080000,fx:'三房',thumbnail:'img/lp/lp1.jpg',isChecked:false,lpPrice:'7800元',jzjl:'2016年1月',cqnx:'60年',ghhs:'1800',ghcw:'1000',rjl:'5.32',lhl:'40%',sdrq:'民水民电',develop:'万科地产',jlzx:'0.6km',jlqg:'2.3km','jlxx':'0.5km',jlyy:'2.3km',jlsc:'4.4km'}
     ];
 
 
     $scope.hxxx = [
-      {id:1,img:'img/house/hxt/hxt1.png',name:'户型A:4室2厅2卫 164平米',price:'700万',label:'大户型+朝南+低价',ldId:1,title:'户型A',ldName:'57栋',dy:'3单元',cs:'25层',mj:'246平米'},
-      {id:2,img:'img/house/hxt/hxt2.png',name:'户型B:3室2厅2卫 104平米',price:'580万',label:'小户型+朝东+高性价比',ldId:3,title:'户型B',ldName:'5栋',dy:'2单元',cs:'20层',mj:'156平米'},
-      {id:3,img:'img/house/hxt/hxt3.png',name:'户型C:4室2厅2卫 124平米',price:'705万',label:'中户型+朝东+低价',ldId:2,title:'户型C',ldName:'7栋',dy:'1单元',cs:'15层',mj:'237平米'},
-      {id:4,img:'img/house/hxt/hxt1.png',name:'户型D:3室2厅2卫 94平米',price:'608万',label:'大户型+朝南+低价',ldId:1,title:'户型D',ldName:'9栋',dy:'1单元',cs:'28层',mj:'323平米'},
-      {id:5,img:'img/house/hxt/hxt2.png',name:'户型E:5室3厅2卫 264平米',price:'1408万',label:'小户型+朝北+低价',ldId:1,title:'户型E',ldName:'10栋',dy:'3单元',cs:'22层',mj:'113平米'},
-      {id:6,img:'img/house/hxt/hxt3.png',name:'户型F:4室2厅2卫 134平米',price:'300万',label:'中户型+朝南+高性价比',ldId:2,title:'户型F',ldName:'8栋',dy:'2单元',cs:'21层',mj:'132平米'},
-      {id:7,img:'img/house/hxt/hxt1.png',name:'户型G:3室1厅1卫 89平米',price:'160万',label:'大户型+朝东+低价',ldId:3,title:'户型G',ldName:'4栋',dy:'2单元',cs:'20层',mj:'136平米'},
-      {id:8,img:'img/house/hxt/hxt2.png',name:'户型H:3室1厅2卫 98平米',price:'600万',label:'小户型+朝南+高性价比',ldId:3,title:'户型H',ldName:'2栋',dy:'1单元',cs:'19层',mj:'205平米'},
-      {id:9,img:'img/house/hxt/hxt3.png',name:'户型I:3室2厅2卫 100平米',price:'500万',label:'中户型+朝东+高性价比',ldId:2,title:'户型I',ldName:'3栋',dy:'3单元',cs:'21层',mj:'116平米'}
+      {id:1,belongTo:5,img:'img/house/hxt/hxt1.png',name:'户型A:4室2厅2卫',price:'700万',label:'大户型+朝南+低价',ldId:1,title:'户型A',ldName:'57栋',dy:'3单元',cs:'25层',mj:'246平米'},
+      {id:2,belongTo:1,img:'img/house/hxt/hxt2.png',name:'户型B:3室2厅2卫',price:'580万',label:'小户型+朝东+高性价比',ldId:3,title:'户型B',ldName:'5栋',dy:'2单元',cs:'20层',mj:'156平米'},
+      {id:3,belongTo:7,img:'img/house/hxt/hxt3.png',name:'户型C:4室2厅2卫',price:'705万',label:'中户型+朝东+低价',ldId:2,title:'户型C',ldName:'7栋',dy:'1单元',cs:'15层',mj:'237平米'},
+      {id:4,belongTo:7,img:'img/house/hxt/hxt1.png',name:'户型D:3室2厅2卫',price:'608万',label:'大户型+朝南+低价',ldId:1,title:'户型D',ldName:'9栋',dy:'1单元',cs:'28层',mj:'323平米'},
+      {id:5,belongTo:6,img:'img/house/hxt/hxt2.png',name:'户型E:5室3厅2卫',price:'1408万',label:'小户型+朝北+低价',ldId:1,title:'户型E',ldName:'10栋',dy:'3单元',cs:'22层',mj:'113平米'},
+      {id:6,belongTo:4,img:'img/house/hxt/hxt3.png',name:'户型F:4室2厅2卫',price:'300万',label:'中户型+朝南+高性价比',ldId:2,title:'户型F',ldName:'8栋',dy:'2单元',cs:'21层',mj:'132平米'},
+      {id:7,belongTo:6,img:'img/house/hxt/hxt1.png',name:'户型G:3室1厅1卫',price:'160万',label:'大户型+朝东+低价',ldId:3,title:'户型G',ldName:'4栋',dy:'2单元',cs:'20层',mj:'136平米'},
+      {id:8,belongTo:4,img:'img/house/hxt/hxt2.png',name:'户型H:3室1厅2卫',price:'600万',label:'小户型+朝南+高性价比',ldId:3,title:'户型H',ldName:'2栋',dy:'1单元',cs:'19层',mj:'205平米'},
+      {id:9,belongTo:6,img:'img/house/hxt/hxt3.png',name:'户型I:3室2厅2卫',price:'500万',label:'中户型+朝东+高性价比',ldId:2,title:'户型I',ldName:'3栋',dy:'3单元',cs:'21层',mj:'116平米'}
     ];
 
-    $scope.hxPKA = [
-        {id:1,img:'img/house/hxt/hxt1.png',name:'户型A:4室2厅2卫 164平米',price:'700万',label:'大户型+朝南+低价',ldId:1,title:'户型A',ldName:'57栋',dy:'3单元',cs:'25层',mj:'246平米'},
-        {id:2,img:'img/house/hxt/hxt2.png',name:'户型B:3室2厅2卫 104平米',price:'580万',label:'小户型+朝东+高性价比',ldId:3,title:'户型B',ldName:'5栋',dy:'2单元',cs:'20层',mj:'156平米'},
-        {id:3,img:'img/house/hxt/hxt3.png',name:'户型C:4室2厅2卫 124平米',price:'705万',label:'中户型+朝东+低价',ldId:2,title:'户型C',ldName:'7栋',dy:'1单元',cs:'15层',mj:'237平米'},
-        {id:4,img:'img/house/hxt/hxt1.png',name:'户型D:3室2厅2卫 94平米',price:'608万',label:'大户型+朝南+低价',ldId:1,title:'户型D',ldName:'9栋',dy:'1单元',cs:'28层',mj:'323平米'},
-      ];
-    $scope.hxPKB = [
-        {id:1,img:'img/house/hxt/hxt2.png',name:'户型B:3室2厅2卫 104平米',price:'580万',label:'小户型+朝东+高性价比',ldId:3,title:'户型B',ldName:'5栋',dy:'2单元',cs:'20层',mj:'156平米'},
-        {id:2,img:'img/house/hxt/hxt2.png',name:'户型E:5室3厅2卫 264平米',price:'1408万',label:'小户型+朝北+低价',ldId:1,title:'户型E',ldName:'10栋',dy:'3单元',cs:'22层',mj:'113平米'},
-        {id:3,img:'img/house/hxt/hxt3.png',name:'户型F:4室2厅2卫 134平米',price:'300万',label:'中户型+朝南+高性价比',ldId:2,title:'户型F',ldName:'8栋',dy:'2单元',cs:'21层',mj:'132平米'},
-        {id:4,img:'img/house/hxt/hxt1.png',name:'户型G:3室1厅1卫 89平米',price:'160万',label:'大户型+朝东+低价',ldId:3,title:'户型G',ldName:'4栋',dy:'2单元',cs:'20层',mj:'136平米'},
-      ];
-    $scope.hxPKC = [
-        {id:1,img:'img/house/hxt/hxt1.png',name:'户型G:3室1厅1卫 89平米',price:'160万',label:'大户型+朝东+低价',ldId:3,title:'户型G',ldName:'4栋',dy:'2单元',cs:'20层',mj:'136平米'},
-        {id:2,img:'img/house/hxt/hxt2.png',name:'户型H:3室1厅2卫 98平米',price:'600万',label:'小户型+朝南+高性价比',ldId:3,title:'户型H',ldName:'2栋',dy:'1单元',cs:'19层',mj:'205平米'},
-        {id:3,img:'img/house/hxt/hxt3.png',name:'户型I:3室2厅2卫 100平米',price:'500万',label:'中户型+朝东+高性价比',ldId:2,title:'户型I',ldName:'3栋',dy:'3单元',cs:'21层',mj:'116平米'}
-    ];
+    $scope.pkhxItemArr = [];
+    $scope.pkhxLpArr = [];
+    $scope.pkhxAll = [];
+    $scope.slider = [];
+    angular.forEach($stateParams.param, function(value){
+        //console.log(value);
+        //$scope.slider.push('slider'+value);
+        angular.forEach($scope.pklp, function(lpValue){
+            if(lpValue.id == value){
+                $scope.pkhxLpArr.push(lpValue);
+            }
+        });
+    });
+
+    console.log($scope.pkhxLpArr);
 
 
+    angular.forEach($scope.pkhxLpArr, function(lpV){
+      console.log(lpV);
+      angular.forEach($scope.hxxx, function(v, k){
+        if(v.belongTo === lpV.id){
+          $scope.pkhxItemArr.push(v);
+          return false;
+        }
+      });
+    })
+
+
+    //angular.forEach($scope.pkhxLpArr, function(vv,kk){
+    //    $scope.lpHxArr = [];
+    //    vv.allHx = [];
+    //    angular.forEach($scope.pkhxItemArr, function(vvv){
+    //        if(vvv.belongTo === vv.id){
+    //            vv.allHx.push(vvv);
+    //        }
+    //    })
+    //});
+
+    $scope.hxIndex = 0;
+
+
+
+    $scope.options = {
+      loop: false,
+      speed: 500,
+      spaceBetween:20,
+      slidesPerView:1,
+      initialSlide:0,
+      slidesPerColumn:1,
+      slidesPerColumnFill:'column',
+      centeredSlides:false,
+      slidesOffsetBefore:0,
+      slidesOffsetAfter:0,
+      paginationHide:true,
+      pagination:false,
+
+      onInit: function(swiper){
+        //console.log(swiper);
+        //console.log(swiper.length);
+
+      },
+
+      onSlideChangeEnd: function(swiper){
+        console.log('The active index is ' + ( swiper.activeIndex ));
+
+        console.log(swiper);
+
+        $scope.hxIndex = swiper.activeIndex;
+        $scope.$apply();
+        //$scope.onSlideHx(swiper.activeIndex);
+      }
+    }
+
+    $scope.func = function(){
+      console.log('dddd');
+    }
 
 
 
