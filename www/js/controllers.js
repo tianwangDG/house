@@ -94,6 +94,10 @@ angular.module('starter.controllers', [])
 
 
     $scope.getFilterFactor = function($filterFactor){
+      console.log($filterFactor);
+
+
+
       switch($filterFactor){
         case 'zt':
           $scope.items = $scope.ztItem;
