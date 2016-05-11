@@ -8,6 +8,204 @@ angular.module('starter.controllers', [])
 
 })
 
+.controller('filterHouseCtrl', function($scope){
+    $scope.goToMemberInfo = function(){
+      $state.go('memberInfo');
+    };
+
+    $scope.sliders = [
+      {id:1,title:'slider1',src:'img/sliders/slider1.jpg'},
+      {id:2,title:'slider2',src:'img/sliders/slider2.jpg'},
+      {id:3,title:'slider3',src:'img/sliders/slider3.jpg'},
+      {id:4,title:'slider4',src:'img/sliders/slider4.jpg'}
+    ];
+
+    $scope.fcData = [
+      {id:1,name:'皇庭壹号',zt:'毛坯',qy:'东城区',zj:500000,fx:'三房',thumbnail:'img/lp/lp2.jpg'},
+      {id:2,name:'东莞人家',zt:'简装',qy:'南城区',zj:1800000,fx:'两房',thumbnail:'img/lp/lp1.jpg'},
+      {id:3,name:'来座山',zt:'简装',qy:'东城区',zj:2200000,fx:'一房',thumbnail:'img/lp/lp2.jpg'},
+      {id:4,name:'御湾国际',zt:'简装',qy:'南城区',zj:2700000,fx:'一房',thumbnail:'img/lp/lp1.jpg'},
+      {id:5,name:'东城中心',zt:'毛坯',qy:'东城区',zj:1900000,fx:'五房',thumbnail:'img/lp/lp2.jpg'},
+      {id:6,name:'帝景花园',zt:'清水',qy:'南城区',zj:2800000,fx:'一房',thumbnail:'img/lp/lp1.jpg'},
+      {id:7,name:'北大一号',zt:'精装',qy:'万江区',zj:1550000,fx:'两房',thumbnail:'img/lp/lp2.jpg'},
+      {id:8,name:'万江首府',zt:'精装',qy:'万江区',zj:400000,fx:'四房',thumbnail:'img/lp/lp1.jpg'},
+      {id:9,name:'帝景国际',zt:'毛坯',qy:'万江区',zj:1080000,fx:'三房',thumbnail:'img/lp/lp2.jpg'},
+      {id:10,name:'万佳花园',zt:'毛坯',qy:'南城区',zj:500000,fx:'四房',thumbnail:'img/lp/lp1.jpg'},
+      {id:11,name:'水岸华庭',zt:'毛坯',qy:'厚街区',zj:1000000,fx:'三房',thumbnail:'img/lp/lp2.jpg'},
+      {id:12,name:'常平首府',zt:'豪装',qy:'厚街区',zj:700000,fx:'三房',thumbnail:'img/lp/lp1.jpg'},
+      {id:13,name:'都市华府',zt:'清水',qy:'南城区',zj:1800000,fx:'两房',thumbnail:'img/lp/lp2.jpg'},
+      {id:14,name:'东方华府',zt:'清水',qy:'东城区',zj:2300000,fx:'五房',thumbnail:'img/lp/lp1.jpg'},
+      {id:15,name:'皇庭国际',zt:'豪装',qy:'万江区',zj:1300000,fx:'两房',thumbnail:'img/lp/lp2.jpg'},
+      {id:16,name:'碧湖东岸',zt:'豪装',qy:'市辖区',zj:1000000,fx:'三房',thumbnail:'img/lp/lp1.jpg'}
+    ];
+
+    $scope.filter = [
+      {id:1,lx:'zt',name:'状态',items:[{fid:1,lx:'zt',name:'毛坯'},{fid:2,lx:'zt',name:'清水'},{fid:3,lx:'zt',name:'简装'},{fid:4,lx:'zt',name:'精装'},{fid:5,lx:'zt',name:'豪装'}]},
+      {id:2,lx:'qy',name:'区域',items:[{fid:1,lx:'qy',name:'不限'},{fid:2,lx:'qy',name:'市辖区'},{fid:3,lx:'qy',name:'东城区'},{fid:4,lx:'qy',name:'南城区'},{fid:5,lx:'qy',name:'万江区'},{fid:5,lx:'qy',name:'厚街区'}]},
+      {id:3,lx:'zj',name:'总价',items:[{fid:1,lx:'zj',name:'100万以下'},{fid:2,lx:'zj',name:'100-150万'},{fid:3,lx:'zj',name:'150-200万'},{fid:4,lx:'zj',name:'200-250万'},{fid:5,lx:'zj',name:'250-300万'}]},
+      {id:4,lx:'fx',name:'房型',items:[{fid:1,lx:'fx',name:'一房'},{fid:2,lx:'fx',name:'两房'},{fid:3,lx:'fx',name:'三房'},{fid:4,lx:'fx',name:'四房'},{fid:5,lx:'fx',name:'五房'}]},
+      {id:5,lx:'ts',name:'特色',items:[{fid:1,lx:'ts',name:'不限',isChecked:false},{fid:2,lx:'ts',name:'精装修',isChecked:false},{fid:3,lx:'ts',name:'带花园',isChecked:false},{fid:4,lx:'ts',name:'近地铁',isChecked:false},{fid:5,lx:'ts',name:'带飘窗',isChecked:false},{fid:6,lx:'ts',name:'不限购',isChecked:false},{fid:7,lx:'ts',name:'复式',isChecked:false},{fid:8,lx:'ts',name:'品牌房企',isChecked:false}]},
+      {id:6,lx:'sm',name:'售卖状态',items:[{fid:1,lx:'sm',name:'不限'},{fid:2,lx:'sm',name:'即将开盘'},{fid:3,lx:'sm',name:'排卡中'},{fid:4,lx:'sm',name:'在售'},{fid:5,lx:'sm',name:'售罄'}]}
+    ];
+
+
+    $scope.ztItem = [
+      {id:1,lx:'zt',name:'毛坯'},
+      {id:2,lx:'zt',name:'清水'},
+      {id:3,lx:'zt',name:'简装'},
+      {id:4,lx:'zt',name:'精装'},
+      {id:5,lx:'zt',name:'豪装'}
+    ];
+    $scope.qyItem = [
+      {id:1,lx:'qy',name:'不限'},
+      {id:2,lx:'qy',name:'市辖区'},
+      {id:3,lx:'qy',name:'东城区'},
+      {id:4,lx:'qy',name:'南城区'},
+      {id:5,lx:'qy',name:'万江区'},
+      {id:6,lx:'qy',name:'厚街区'}
+    ];
+    $scope.zjItem = [
+      {id:1,lx:'zj',name:'100万以下'},
+      {id:2,lx:'zj',name:'100-150万'},
+      {id:3,lx:'zj',name:'150-200万'},
+      {id:4,lx:'zj',name:'200-250万'},
+      {id:5,lx:'zj',name:'250-300万'}
+    ];
+    $scope.fxItem = [
+      {id:1,lx:'fx',name:'一房'},
+      {id:2,lx:'fx',name:'两房'},
+      {id:3,lx:'fx',name:'三房'},
+      {id:4,lx:'fx',name:'四房'},
+      {id:5,lx:'fx',name:'五房'}
+    ];
+    $scope.tsItem = [
+      {id:1,lx:'ts',name:'不限'},
+      {id:2,lx:'ts',name:'精装修'},
+      {id:3,lx:'ts',name:'带花园'},
+      {id:4,lx:'ts',name:'近地铁'},
+      {id:5,lx:'ts',name:'带飘窗'},
+      {id:6,lx:'ts',name:'不限购'}
+    ];
+    $scope.smItem = [
+      {id:1,lx:'sm',name:'不限'},
+      {id:2,lx:'sm',name:'即将开盘'},
+      {id:3,lx:'sm',name:'排卡中'},
+      {id:4,lx:'sm',name:'在售'},
+      {id:5,lx:'sm',name:'售罄'}
+    ];
+    $scope.filterType = [
+      {id:1,lx:'zt',name:'状态'},
+      {id:2,lx:'qy',name:'区域'},
+      {id:3,lx:'zj',name:'总价'},
+      {id:4,lx:'fx',name:'房型'},
+      {id:5,lx:'ts',name:'特色'},
+      {id:6,lx:'sm',name:'售卖状态'},
+    ];
+
+    //初始化
+    $scope.result = $scope.fcData;
+    $scope.showFilterBox = false;
+    $scope.showMoreFilterBox = false;
+    $scope.arrowType = 'ion-arrow-up-b';
+    $scope.items = [];
+    $scope.queryArr = [];
+    $scope.showTs = false;
+
+
+
+    $scope.showFilter = function(id,lx,$index){
+      //console.log(id);
+      //console.log(lx);
+      //console.log($index);
+      //console.log($scope.filter[$index]['items']);
+      $scope.items = $scope.filter[$index]['items'];
+
+      $scope.showMoreFilterBox = false;
+
+      //控制下拉栏显示与隐藏
+      if($scope.showFilterBox){
+        $scope.showFilterBox = !$scope.showFilterBox;
+      }
+      $scope.showFilterBox = !$scope.showFilterBox;
+      $scope.key = id;
+
+      $scope.filterItems = function(lx,fid,$index){
+        //console.log(lx);
+        //console.log(fid);
+        //console.log($index);
+        $scope.showFilterBox = false;
+        //回填筛选字段
+        $scope.filter.forEach(function(item){
+          if(item.lx == lx){
+            //console.log(item);
+            item.name = item.items[$index].name;
+            $scope.mark = true;
+          }
+        })
+
+        $scope.queryArr[lx] = {fid:fid};
+        console.log($scope.queryArr);
+      }
+    }
+
+    $scope.showMoreFilter = function($filterFactor) {
+      $scope.showFilterBox = false;
+      $scope.moreItems = [];
+      $scope.showMoreFilterBox = !$scope.showMoreFilterBox;
+      if($scope.moreItems.length == 0){
+        //$scope.moreItems =$scope.filter[4].items;
+        $scope.ts = $scope.filter[4].items;
+        $scope.showTs = true;
+      }
+
+      $scope.moreTs = function(lx){
+        $scope.showTs = true;
+        $scope.ts = $scope.filter[4].items;
+      }
+
+      $scope.moreFilterItem = function(moreFilterLx) {
+        for(var i=0; i<$scope.filter.length;i++){
+          if($scope.filter[i].lx == moreFilterLx){
+            $scope.moreItems = $scope.filter[i].items;
+            $scope.showTs = false;
+          }
+        }
+      }
+    }
+
+    $tsFilterArr = [];
+
+    $scope.getCheck = function(tsItem){
+      console.log(tsItem.isChecked);
+      console.log(tsItem.fid);
+
+      $tsFilterArr[tsItem.fid] = tsItem.isChecked;
+
+      console.log($tsFilterArr);
+    }
+
+    $scope.submitTs = function(){
+      $scope.showMoreFilterBox = false;
+    }
+
+
+    $scope.moreFilterItems = function(lx,fid,$index){
+      //console.log(fid);
+      //console.log(lx);
+      //console.log($index);
+
+      $scope.showMoreFilterBox = false;
+      $scope.queryArr[lx] = {fid:fid};
+
+      console.log($scope.queryArr);
+    }
+
+
+
+
+})
+
+
 .controller('DashCtrl', function($scope,$rootScope,$state) {
     $scope.goToMemberInfo = function(){
       $state.go('memberInfo');
@@ -96,8 +294,6 @@ angular.module('starter.controllers', [])
     $scope.getFilterFactor = function($filterFactor){
       console.log($filterFactor);
 
-
-
       switch($filterFactor){
         case 'zt':
           $scope.items = $scope.ztItem;
@@ -173,6 +369,7 @@ angular.module('starter.controllers', [])
               $scope.fcData.forEach(function(e){
                 if(e.zt == '毛坯'){
                   $scope.result.push(e);
+                  $scope.filterType[0].name = '毛坯';
                 }
               })
               break;
@@ -180,6 +377,7 @@ angular.module('starter.controllers', [])
               $scope.fcData.forEach(function(e){
                 if(e.zt == '清水'){
                   $scope.result.push(e);
+                  $scope.filterType[0].name = '清水';
                 }
               })
               break;
@@ -187,6 +385,7 @@ angular.module('starter.controllers', [])
               $scope.fcData.forEach(function(e){
                 if(e.zt == '简装'){
                   $scope.result.push(e);
+                  $scope.filterType[0].name = '简装';
                 }
               })
               break;
@@ -194,6 +393,7 @@ angular.module('starter.controllers', [])
               $scope.fcData.forEach(function(e){
                 if(e.zt == '精装'){
                   $scope.result.push(e);
+                  $scope.filterType[0].name = '精装';
                 }
               })
               break;
@@ -201,6 +401,7 @@ angular.module('starter.controllers', [])
               $scope.fcData.forEach(function(e){
                 if(e.zt == '豪装'){
                   $scope.result.push(e);
+                  $scope.filterType[0].name = '豪装';
                 }
               })
               break;
@@ -219,6 +420,7 @@ angular.module('starter.controllers', [])
               $scope.fcData.forEach(function(e){
                 if(e.qy == '市辖区'){
                   $scope.result.push(e);
+                  $scope.filterType[1].name = '市辖区';
                 }
               })
               break;
@@ -226,6 +428,7 @@ angular.module('starter.controllers', [])
               $scope.fcData.forEach(function(e){
                 if(e.qy == '东城区'){
                   $scope.result.push(e);
+                  $scope.filterType[1].name = '东城区';
                 }
               })
               break;
@@ -233,6 +436,7 @@ angular.module('starter.controllers', [])
               $scope.fcData.forEach(function(e){
                 if(e.qy == '南城区'){
                   $scope.result.push(e);
+                  $scope.filterType[1].name = '南城区';
                 }
               })
               break;
@@ -240,6 +444,7 @@ angular.module('starter.controllers', [])
               $scope.fcData.forEach(function(e){
                 if(e.qy == '万江区'){
                   $scope.result.push(e);
+                  $scope.filterType[1].name = '万江区';
                 }
               })
               break;
@@ -247,6 +452,7 @@ angular.module('starter.controllers', [])
               $scope.fcData.forEach(function(e){
                 if(e.qy == '厚街区'){
                   $scope.result.push(e);
+                  $scope.filterType[1].name = '厚街区';
                 }
               })
               break;
@@ -262,6 +468,7 @@ angular.module('starter.controllers', [])
               $scope.fcData.forEach(function(e){
                 if(e.zj > 2500000){
                   $scope.result.push(e);
+                  $scope.filterType[2].name = '250万以上';
                 }
               })
               break;
@@ -269,6 +476,7 @@ angular.module('starter.controllers', [])
               $scope.fcData.forEach(function(e){
                 if(e.zj > 2000000 && e.zj <= 2500000){
                   $scope.result.push(e);
+                  $scope.filterType[2].name = '200-250万';
                 }
               })
               break;
@@ -276,6 +484,7 @@ angular.module('starter.controllers', [])
               $scope.fcData.forEach(function(e){
                 if(e.zj > 1500000 && e.zj <= 2000000){
                   $scope.result.push(e);
+                  $scope.filterType[2].name = '150-200万';
                 }
               })
               break;
@@ -283,6 +492,7 @@ angular.module('starter.controllers', [])
               $scope.fcData.forEach(function(e){
                 if(e.zj> 1000000 && e.zj <= 1500000){
                   $scope.result.push(e);
+                  $scope.filterType[2].name = '100-150万';
                 }
               })
               break;
@@ -290,6 +500,7 @@ angular.module('starter.controllers', [])
               $scope.fcData.forEach(function(e){
                 if(e.zj < 1000000){
                   $scope.result.push(e);
+                  $scope.filterType[2].name = '100万以下';
                 }
               })
               break;
@@ -305,6 +516,7 @@ angular.module('starter.controllers', [])
               $scope.fcData.forEach(function(e){
                 if(e.fx == '一房'){
                   $scope.result.push(e);
+                  $scope.filterType[3].name = '一房';
                 }
               })
               break;
@@ -312,6 +524,7 @@ angular.module('starter.controllers', [])
               $scope.fcData.forEach(function(e){
                 if(e.fx == '两房'){
                   $scope.result.push(e);
+                  $scope.filterType[3].name = '两房';
                 }
               })
               break;
@@ -319,6 +532,7 @@ angular.module('starter.controllers', [])
               $scope.fcData.forEach(function(e){
                 if(e.fx == '三房'){
                   $scope.result.push(e);
+                  $scope.filterType[3].name = '三房';
                 }
               })
               break;
@@ -326,6 +540,7 @@ angular.module('starter.controllers', [])
               $scope.fcData.forEach(function(e){
                 if(e.fx == '四房'){
                   $scope.result.push(e);
+                  $scope.filterType[3].name = '四房';
                 }
               })
               break;
@@ -333,6 +548,7 @@ angular.module('starter.controllers', [])
               $scope.fcData.forEach(function(e){
                 if(e.fx == '五房'){
                   $scope.result.push(e);
+                  $scope.filterType[3].name = '五房';
                 }
               })
               break;

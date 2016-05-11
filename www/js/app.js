@@ -77,6 +77,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
     }
   })
 
+  .state('tab.filterHouse', {
+    url: '/filterHouse',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/filterHouseCtrl.html',
+        controller: 'filterHouseCtrl'
+      }
+    }
+  })
+
   .state('tab.dd', {
     url: '/dd',
     views: {
